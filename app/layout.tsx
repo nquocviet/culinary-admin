@@ -4,7 +4,6 @@ import { siteConfig } from '@/config/site'
 import { AppProvider } from '@/providers'
 
 import '@/styles/globals.css'
-import '@/styles/tailwind.css'
 
 const fontSans = FontSans({
 	subsets: ['latin'],

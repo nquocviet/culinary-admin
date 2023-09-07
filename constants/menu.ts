@@ -19,7 +19,7 @@ export type MenuItemType = {
 	href?: string
 	icon?: Icon
 	children?: MenuItemType[]
-	isChild?: boolean
+	highlight?: boolean
 	opened?: boolean
 }
 

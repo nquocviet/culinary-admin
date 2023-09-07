@@ -22,9 +22,15 @@ const Footer = ({ opened }: FooterProps) => {
 			}}
 			ml={{ xs: opened ? ASIDE_WIDTH_DEFAULT : ASIDE_WIDTH_COLLAPSE }}
 		>
-			<Flex justify="center" align="center" className="h-full text-gray-500">
+			<Flex
+				justify="center"
+				align="center"
+				sx={{
+					height: '100%',
+					color: 'var(--gray-500)',
+				}}
+			>
 				<Text align="center">
-					<div className="w-full"></div>
 					&copy; {CURRENT_YEAR} {APP_NAME}. All rights reversed.
 				</Text>
 			</Flex>

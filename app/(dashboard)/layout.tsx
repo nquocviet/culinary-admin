@@ -1,11 +1,15 @@
 'use client'
 
 import React, { ReactNode } from 'react'
-import { AppShell, Container, useMantineTheme } from '@mantine/core'
+import { AppShell, Container, rem, useMantineTheme } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 
 import { Footer, Navbar } from '@/components'
-import { FOOTER_HEIGHT } from '@/constants/layout'
+import {
+	ASIDE_WIDTH_COLLAPSE,
+	ASIDE_WIDTH_DEFAULT,
+	FOOTER_HEIGHT,
+} from '@/constants/layout'
 
 interface DashboardLayoutProps {
 	children: ReactNode
@@ -14,6 +18,7 @@ interface DashboardLayoutProps {
 const DashboardLayout = ({ children }: DashboardLayoutProps) => {
 	const theme = useMantineTheme()
 	const [opened, { toggle }] = useDisclosure(true)
+	const asideWidth = rem(opened ? ASIDE_WIDTH_DEFAULT : ASIDE_WIDTH_COLLAPSE)
 
 	return (
 		<AppShell
@@ -28,6 +33,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
 							: theme.colors.gray[0],
 					minHeight: `calc(100vh - ${FOOTER_HEIGHT}px)`,
 					paddingBottom: '1rem',
+					paddingLeft: `calc(${asideWidth} + ${rem(16)})`,
 				},
 				body: {
 					overflow: 'hidden',
@@ -37,7 +43,17 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
 			navbar={<Navbar opened={opened} toggle={toggle} />}
 			footer={<Footer opened={opened} />}
 		>
-			<Container py={16} className="flex h-full flex-col items-stretch gap-6">
+			<Container
+				py={16}
+				sx={{
+					display: 'flex',
+					flexDirection: 'column',
+					alignItems: 'stretch',
+					height: '100%',
+					gap: rem(24),
+				}}
+				fluid
+			>
 				{children}
 			</Container>
 		</AppShell>

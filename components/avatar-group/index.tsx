@@ -1,15 +1,12 @@
 import React from 'react'
 import { Avatar, AvatarProps, Flex, Text } from '@mantine/core'
-
-import { cn } from '@/utils'
+import clsx from 'clsx'
 
 interface AvatarGroupProps extends AvatarProps {
 	spacing?: number
 	title: string
 	description?: string
 	className?: string
-	titleClassName?: string
-	descriptionClassName?: string
 }
 
 const AvatarGroup = ({
@@ -17,8 +14,6 @@ const AvatarGroup = ({
 	title,
 	description,
 	className,
-	titleClassName,
-	descriptionClassName,
 	...props
 }: AvatarGroupProps) => {
 	return (
@@ -26,16 +21,21 @@ const AvatarGroup = ({
 			<Avatar size="md" radius="xl" color="primary" {...props} />
 			<div>
 				<Text
-					className={cn('text-sm font-medium line-clamp-1', titleClassName)}
+					sx={{
+						fontSize: 'var(--fs-text-sm)',
+						fontWeight: 'var(--fw-medium)' as 'normal',
+					}}
+					className="line-clamp-1"
 				>
 					{title}
 				</Text>
 				{description && (
 					<Text
-						className={cn(
-							'text-xs text-gray-600 line-clamp-1',
-							descriptionClassName
-						)}
+						sx={{
+							fontSize: 'var(--fs-text-xs)',
+							color: 'var(--gray-600)',
+						}}
+						className="line-clamp-1"
 					>
 						{description}
 					</Text>

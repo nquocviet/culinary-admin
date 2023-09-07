@@ -1,6 +1,3 @@
-import { ClassValue, clsx } from 'clsx'
-import { twMerge } from 'tailwind-merge'
-
 export const hasChildren = (item: Record<string, unknown>) => {
 	const { children } = item
 
@@ -28,8 +25,4 @@ export const formatDate = (
 	const options = opts || defaultOptions
 
 	return new Intl.DateTimeFormat(locales, options).format(date)
-}
-
-export const cn = (...classNames: ClassValue[]) => {
-	return twMerge(clsx(classNames))
 }

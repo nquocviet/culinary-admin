@@ -4,6 +4,7 @@ import {
 	Burger,
 	Flex,
 	Navbar as MantineNavbar,
+	rem,
 	ScrollArea,
 } from '@mantine/core'
 import { SignOut } from '@phosphor-icons/react'
@@ -12,7 +13,6 @@ import Link from 'next/link'
 import { AvatarGroup, Logo, MainMenu } from '@/components'
 import { ASIDE_WIDTH_COLLAPSE, ASIDE_WIDTH_DEFAULT } from '@/constants/layout'
 import { ROUTES } from '@/constants/routes'
-import { cn } from '@/utils'
 
 interface NavbarProps {
 	opened: boolean
@@ -25,20 +25,29 @@ const Navbar = ({ opened, toggle }: NavbarProps) => {
 			p="md"
 			hiddenBreakpoint="sm"
 			hidden={!opened}
-			width={{ xs: opened ? ASIDE_WIDTH_DEFAULT : ASIDE_WIDTH_COLLAPSE }}
+			w={opened ? ASIDE_WIDTH_DEFAULT : ASIDE_WIDTH_COLLAPSE}
 		>
-			<Flex align="center" gap={12} className="mb-5 h-[45px] px-2">
+			<Flex
+				align="center"
+				gap={12}
+				sx={{
+					marginBottom: rem(20),
+					height: rem(45),
+					paddingLeft: rem(8),
+					paddingRight: rem(8),
+				}}
+			>
 				<Burger
 					size={20}
 					opened={false}
-					className="shrink-0"
+					sx={{ flexShrink: 0 }}
 					onClick={toggle}
 				/>
-				<Link href={ROUTES.HOME} className="text-black no-underline">
-					<Flex align="center" gap={10}>
+				{opened && (
+					<Link href={ROUTES.HOME}>
 						<Logo />
-					</Flex>
-				</Link>
+					</Link>
+				)}
 			</Flex>
 			<MantineNavbar.Section component={ScrollArea} mx="-md" px="md" grow>
 				<MainMenu opened={opened} />
@@ -46,18 +55,32 @@ const Navbar = ({ opened, toggle }: NavbarProps) => {
 			<Flex
 				align="center"
 				gap={8}
-				className="-mx-4 mt-4 border-t border-gray-200 px-6 pt-6 pb-2"
+				sx={{
+					marginLeft: rem(-16),
+					marginRight: rem(-16),
+					marginTop: rem(16),
+					borderTop: '1px solid var(--gray-200)',
+					padding: `${rem(24)} ${rem(24)} ${rem(8)}`,
+				}}
 			>
 				{opened && (
 					<AvatarGroup
 						title="Username"
 						description="email.example@gmail.com"
-						className="grow"
+						sx={{
+							flexGrow: 1,
+						}}
 					>
 						US
 					</AvatarGroup>
 				)}
-				<ActionIcon size="lg" className={cn('shrink-0', !opened && '-mr-4')}>
+				<ActionIcon
+					size="lg"
+					sx={{
+						flexShrink: 0,
+						...(!opened && { marginRight: rem(-16) }),
+					}}
+				>
 					<SignOut size={20} />
 				</ActionIcon>
 			</Flex>

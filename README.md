@@ -2,7 +2,7 @@
 
 <!-- INTRODUCTION -->
 <div align="center">
-  <h2 align="center">Next.js with TailwindCSS</h2>
+  <h2 align="center">Culinary Admin</h2>
   <p align="center">
     Description
   </p>
@@ -41,18 +41,15 @@ Project description
 - Install all extensions below:
   1. [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
   2. [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-  3. [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
 
 ### Built With
 
 All major frameworks/libraries used to bootstrap this project.
 
-- `next.js` - v12.3.1
+- `next.js` - v13.4.6
 - `react` - v18.2.0
 - `react-dom` - v18.2.0
-- `tailwindcss` - v3.1.8 - A utility-first CSS framework
 - `react-hook-form` - v7.36.1 - Custom hook for managing forms
-- `swr` - 1.3.0 - React hooks for data fetching
 
 <p align="right"><a href="#readme-top">Back to top</a></p>
 

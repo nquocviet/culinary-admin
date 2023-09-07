@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react'
-import { Collapse, Divider, Flex, NavLink } from '@mantine/core'
+import React, { useEffect, useMemo, useState } from 'react'
+import { Collapse, Divider, Flex, Menu, NavLink, rem, Sx } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { CaretRight } from '@phosphor-icons/react'
 import Link from 'next/link'
@@ -7,10 +7,10 @@ import { usePathname } from 'next/navigation'
 
 import { MENU_LIST, MenuItemType } from '@/constants/menu'
 import { ROUTES } from '@/constants/routes'
-import { cn, hasChildren } from '@/utils'
+import { hasChildren } from '@/utils'
 
 interface SingleMenuProps extends MenuItemType {
-	className?: string
+	sx?: Sx
 }
 
 interface MainMenuProps {
@@ -21,8 +21,8 @@ const SingleMenu = ({
 	label,
 	href,
 	icon: Icon,
-	className,
-	isChild,
+	sx,
+	highlight,
 	opened,
 }: SingleMenuProps) => {
 	const pathname = usePathname()
@@ -41,11 +41,17 @@ const SingleMenu = ({
 			href={href || ''}
 			color="gray"
 			label={opened ? label : ''}
-			className={cn(
-				'rounded leading-6',
-				isChild && active && '!bg-transparent !text-primary-500',
-				className
-			)}
+			sx={{
+				borderRadius: rem(6),
+				lineHeight: rem(24),
+				fontWeight: 'var(--fw-medium)' as 'normal',
+				...sx,
+				...(highlight &&
+					active && {
+						backgroundColor: 'transparent !important',
+						color: 'var(--primary-500) !important',
+					}),
+			}}
 			{...(!opened && {
 				styles: {
 					icon: {
@@ -68,7 +74,53 @@ const NestedMenu = ({ label, icon: Icon, children, opened }: MenuItemType) => {
 			return pathname.includes(href)
 		})
 	}, [pathname, children])
+	const [menuOpened, setMenuOpened] = useState(false)
 	const [inOpened, { toggle }] = useDisclosure(active)
+
+	useEffect(() => {
+		if (!opened) {
+			setMenuOpened(false)
+		}
+	}, [opened])
+
+	if (!opened) {
+		return (
+			<Menu
+				shadow="md"
+				width={180}
+				position="right-start"
+				opened={menuOpened}
+				onChange={setMenuOpened}
+				withinPortal
+			>
+				<Menu.Target>
+					<NavLink
+						active={active}
+						color="gray"
+						label={opened ? label : ''}
+						sx={{
+							borderRadius: rem(6),
+							lineHeight: rem(24),
+							fontWeight: 'var(--fw-medium)' as 'normal',
+						}}
+						{...(Icon && {
+							icon: <Icon size={24} weight={active ? 'fill' : 'regular'} />,
+						})}
+						styles={{
+							icon: {
+								marginRight: 0,
+							},
+						}}
+					/>
+				</Menu.Target>
+				<Menu.Dropdown>
+					{children?.map((item) => (
+						<SingleMenu key={item.label} opened={true} highlight {...item} />
+					))}
+				</Menu.Dropdown>
+			</Menu>
+		)
+	}
 
 	return (
 		<>
@@ -77,23 +129,22 @@ const NestedMenu = ({ label, icon: Icon, children, opened }: MenuItemType) => {
 				color="gray"
 				label={opened ? label : ''}
 				onClick={toggle}
-				className="rounded font-medium leading-6"
+				sx={{
+					borderRadius: rem(6),
+					lineHeight: rem(24),
+					fontWeight: 'var(--fw-medium)' as 'normal',
+				}}
 				{...(Icon && {
 					icon: <Icon size={24} weight={active ? 'fill' : 'regular'} />,
-				})}
-				{...(!opened && {
-					styles: {
-						icon: {
-							marginRight: 0,
-						},
-					},
 				})}
 				{...(children &&
 					opened && {
 						rightSection: (
 							<CaretRight
 								size={16}
-								className={cn(opened ? '-rotate-90' : 'rotate-90')}
+								style={{
+									transform: `rotate(${opened ? -90 : 90})`,
+								}}
 							/>
 						),
 					})}
@@ -103,9 +154,9 @@ const NestedMenu = ({ label, icon: Icon, children, opened }: MenuItemType) => {
 					{children.map((item) => (
 						<SingleMenu
 							key={item.label}
-							className="pl-12"
+							sx={{ paddingLeft: rem(48) }}
 							opened={opened}
-							isChild
+							highlight
 							{...item}
 						/>
 					))}
@@ -127,7 +178,9 @@ const MainMenu = ({ opened }: MainMenuProps) => {
 			direction="column"
 			align="stretch"
 			gap={6}
-			className="-ml-px font-medium"
+			sx={{
+				marginLeft: '-1px',
+			}}
 		>
 			{MENU_LIST.map((menu, index) => {
 				const isLast = index === MENU_LIST.length - 1
