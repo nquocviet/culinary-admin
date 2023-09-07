@@ -1,0 +1,5 @@
+export { default as AvatarGroup } from './avatar-group'
+export { default as Footer } from './footer'
+export { default as Logo } from './logo'
+export { default as MainMenu } from './main-menu'
+export { default as Navbar } from './navbar'
