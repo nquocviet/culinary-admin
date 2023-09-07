@@ -1,13 +1,25 @@
-import { Inter as FontSans } from 'next/font/google'
+'use client'
+
+import { clsx } from '@mantine/core'
+import {
+	Inter as FontInter,
+	Merriweather as FontMerriweather,
+} from 'next/font/google'
 
 import { siteConfig } from '@/config/site'
 import { AppProvider } from '@/providers'
 
 import '@/styles/globals.css'
 
-const fontSans = FontSans({
+const fontMerriweather = FontMerriweather({
 	subsets: ['latin'],
-	variable: '--font-sans',
+	weight: ['300', '400', '700', '900'],
+	variable: '--ff-merriweather',
+})
+
+const fontInter = FontInter({
+	subsets: ['latin'],
+	variable: '--ff-inter',
 })
 
 interface RootLayoutProps {
@@ -59,7 +71,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<head />
-			<body className={fontSans.className}>
+			<body className={clsx(fontMerriweather.variable, fontInter.variable)}>
 				<AppProvider>{children}</AppProvider>
 			</body>
 		</html>

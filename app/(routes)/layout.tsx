@@ -30,7 +30,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
 					background:
 						theme.colorScheme === 'dark'
 							? theme.colors.dark[8]
-							: theme.colors.gray[0],
+							: theme.colors.white,
 					minHeight: `calc(100vh - ${FOOTER_HEIGHT}px)`,
 					paddingBottom: '1rem',
 					paddingLeft: `calc(${asideWidth} + ${rem(16)})`,

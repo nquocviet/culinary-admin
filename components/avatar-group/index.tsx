@@ -1,6 +1,5 @@
 import React from 'react'
 import { Avatar, AvatarProps, Flex, Text } from '@mantine/core'
-import clsx from 'clsx'
 
 interface AvatarGroupProps extends AvatarProps {
 	spacing?: number
@@ -18,7 +17,7 @@ const AvatarGroup = ({
 }: AvatarGroupProps) => {
 	return (
 		<Flex align="center" gap={spacing} className={className}>
-			<Avatar size="md" radius="xl" color="primary" {...props} />
+			<Avatar size="md" radius="xl" color="blue" {...props} />
 			<div>
 				<Text
 					sx={{

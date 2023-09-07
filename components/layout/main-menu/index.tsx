@@ -49,7 +49,7 @@ const SingleMenu = ({
 				...(highlight &&
 					active && {
 						backgroundColor: 'transparent !important',
-						color: 'var(--primary-500) !important',
+						color: 'var(--primary-700) !important',
 					}),
 			}}
 			{...(!opened && {
