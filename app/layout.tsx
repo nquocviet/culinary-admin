@@ -1,6 +1,3 @@
-'use client'
-
-import { clsx } from '@mantine/core'
 import {
 	Inter as FontInter,
 	Merriweather as FontMerriweather,
@@ -71,7 +68,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<head />
-			<body className={clsx(fontMerriweather.variable, fontInter.variable)}>
+			<body className={`${fontMerriweather.variable} ${fontInter.variable}`}>
 				<AppProvider>{children}</AppProvider>
 			</body>
 		</html>
