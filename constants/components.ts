@@ -2,6 +2,14 @@ import { ButtonStylesParams } from '@mantine/core'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const components: any = {
+	Badge: {
+		styles: () => ({
+			root: {
+				textTransform: 'capitalize',
+				fontWeight: 'var(--fw-medium)',
+			},
+		}),
+	},
 	Button: {
 		styles: (theme, params: ButtonStylesParams, { variant }) => ({
 			root: {
@@ -19,6 +27,15 @@ export const components: any = {
 					params.color === 'primary' && variant === 'filled'
 						? theme.colors.black
 						: undefined,
+			},
+		}),
+	},
+	Checkbox: {
+		styles: () => ({
+			input: {
+				'&:checked': {
+					backgroundColor: 'var(--primary-700)',
+				},
 			},
 		}),
 	},

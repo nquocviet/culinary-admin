@@ -1,5 +1,5 @@
 import React from 'react'
-import { Loader, Text } from '@mantine/core'
+import { Loader, rem, Text } from '@mantine/core'
 import { DataTable, DataTableProps } from 'mantine-datatable'
 
 type TableProps<T extends Record<string, unknown>> = DataTableProps<T> & {
@@ -22,7 +22,7 @@ const Table = <T extends Record<string, unknown>>({
 			records={records}
 			fetching={fetching}
 			borderColor="var(--gray-200)"
-			rowBorderColor="var(--gray-200)"
+			rowBorderColor="transparent"
 			rowClassName="h-10"
 			sx={{
 				height: 'auto',
@@ -36,20 +36,30 @@ const Table = <T extends Record<string, unknown>>({
 				'& table': {
 					minWidth,
 				},
+				'& thead th': {
+					color: 'var(--gray-500) !important',
+					fontSize: 'var(--fs-text-sm) !important',
+					fontWeight: 'var(--fw-medium) !important' as 'normal',
+				},
+				'& th:first-child, & td:first-child': {
+					paddingLeft: rem(16),
+				},
+				'& th:last-child, & td:last-child': {
+					paddingRight: rem(16),
+				},
 			}}
 			styles={() => ({
 				header: {
 					height: disableHead ? 0 : 40,
 				},
 				pagination: {
-					borderTopColor: 'transparent',
 					marginTop: 'auto',
-					paddingLeft: 0,
-					paddingRight: 0,
+					padding: rem(16),
 				},
 			})}
 			{...rest}
-			withBorder={false}
+			withBorder={true}
+			borderRadius="md"
 			/* eslint-disable @typescript-eslint/no-explicit-any */
 			columns={columns as any}
 			customLoader={

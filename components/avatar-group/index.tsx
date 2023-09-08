@@ -17,7 +17,7 @@ const AvatarGroup = ({
 }: AvatarGroupProps) => {
 	return (
 		<Flex align="center" gap={spacing} className={className}>
-			<Avatar size="md" radius="xl" color="blue" {...props} />
+			<Avatar size="md" radius="xl" color="gray" {...props} />
 			<div>
 				<Text
 					sx={{
