@@ -50,6 +50,9 @@ const SingleMenu = ({
 					active && {
 						backgroundColor: 'transparent !important',
 						color: 'var(--primary-700) !important',
+						'&:hover': {
+							backgroundColor: 'var(--gray-50) !important',
+						},
 					}),
 			}}
 			{...(!opened && {

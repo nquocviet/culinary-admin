@@ -1,10 +1,12 @@
 import React from 'react'
 import { Grid, Paper, rem, Text } from '@mantine/core'
 import { ArrowDown, ArrowUp } from '@phosphor-icons/react'
+import { Catamaran as FontCatamaran } from 'next/font/google'
 import Image from 'next/image'
 
 import DeclineChart from '@/public/images/decline-chart.svg'
 import IncreaseChart from '@/public/images/increase-chart.svg'
+import { formatNumber } from '@/utils'
 
 interface AnalysisGroupProps {
 	title: string
@@ -13,6 +15,11 @@ interface AnalysisGroupProps {
 	comparison: 'day' | 'month' | 'year'
 	status: 'increase' | 'decline'
 }
+
+const fontCatamaran = FontCatamaran({
+	subsets: ['latin'],
+	variable: '--ff-catamaran',
+})
 
 const AnalysisGroup = ({
 	title,
@@ -44,13 +51,15 @@ const AnalysisGroup = ({
 			<Grid align="stretch" gutter={16}>
 				<Grid.Col span={7}>
 					<Text
+						className={fontCatamaran.variable}
 						sx={{
+							fontFamily: 'var(--ff-catamaran)',
 							fontSize: 'var(--fs-display-md)',
 							fontWeight: 'var(--fw-semibold)' as 'bold',
 							marginBottom: rem(16),
 						}}
 					>
-						{total}
+						{formatNumber(total)}
 					</Text>
 					<Text
 						sx={{

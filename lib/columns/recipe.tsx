@@ -1,22 +1,34 @@
 import { ActionIcon, Badge, Flex } from '@mantine/core'
+import { useDisclosure } from '@mantine/hooks'
 import { PencilSimple, Trash } from '@phosphor-icons/react'
 
-import { AvatarGroup, Chip } from '@/components'
+import { AvatarGroup, Chip, ModalConfirm } from '@/components'
 import { MAX_TAGS_DISPLAY } from '@/constants/common'
 import { RECIPE_STATUS } from '@/constants/recipe'
 import { MantineDataTableColumn } from '@/types'
 import { formatDate } from '@/utils'
 
-const RecipeActions = () => {
+const RecipeActions = ({ title }) => {
+	const [opened, { open, close }] = useDisclosure(false)
+
 	return (
-		<Flex gap={8}>
-			<ActionIcon>
-				<PencilSimple size={20} />
-			</ActionIcon>
-			<ActionIcon>
-				<Trash size={20} />
-			</ActionIcon>
-		</Flex>
+		<>
+			<Flex gap={8}>
+				<ActionIcon>
+					<PencilSimple size={20} />
+				</ActionIcon>
+				<ActionIcon onClick={open}>
+					<Trash size={20} />
+				</ActionIcon>
+			</Flex>
+			<ModalConfirm
+				opened={opened}
+				onClose={close}
+				title={`Delete recipe: “${title}”`}
+				message="Are you sure you want to delete this recipe? This action cannot be undone."
+				confirmText="Delete"
+			/>
+		</>
 	)
 }
 
@@ -90,6 +102,6 @@ export const RECIPE_COLUMNS: MantineDataTableColumn<any> = [
 	{
 		accessor: 'action',
 		title: '',
-		render: () => <RecipeActions />,
+		render: (recipe) => <RecipeActions {...recipe} />,
 	},
 ]

@@ -30,11 +30,11 @@ export const components: any = {
 			},
 		}),
 	},
-	Checkbox: {
-		styles: () => ({
-			input: {
-				'&:checked': {
-					backgroundColor: 'var(--primary-700)',
+	Pagination: {
+		styles: (theme) => ({
+			control: {
+				'&[data-active]': {
+					color: theme.colors.black,
 				},
 			},
 		}),

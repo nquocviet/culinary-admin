@@ -26,3 +26,11 @@ export const formatDate = (
 
 	return new Intl.DateTimeFormat(locales, options).format(date)
 }
+
+export const formatNumber = (
+	num: number,
+	locales: Intl.LocalesArgument = 'en-US',
+	options?: Intl.NumberFormatOptions
+) => {
+	return num.toLocaleString(locales, options)
+}
