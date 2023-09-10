@@ -3,8 +3,8 @@ import { useDisclosure } from '@mantine/hooks'
 import { PencilSimple, Trash } from '@phosphor-icons/react'
 
 import { AvatarGroup, Chip, ModalConfirm } from '@/components'
+import { BLOG_STATUS } from '@/constants/blog'
 import { MAX_TAGS_DISPLAY } from '@/constants/common'
-import { RECIPE_STATUS } from '@/constants/recipe'
 import { MantineDataTableColumn } from '@/types'
 import { formatDate } from '@/utils'
 
@@ -76,9 +76,9 @@ export const BLOG_COLUMNS: MantineDataTableColumn<any> = [
 		width: 100,
 		render: ({ status }) => {
 			switch (status) {
-				case RECIPE_STATUS.DRAFT:
+				case BLOG_STATUS.DRAFT:
 					return <Badge color="gray">Draft</Badge>
-				case RECIPE_STATUS.PUBLISHED:
+				case BLOG_STATUS.PUBLISHED:
 					return <Badge color="green">Published</Badge>
 				default:
 					return '-'
@@ -96,6 +96,6 @@ export const BLOG_COLUMNS: MantineDataTableColumn<any> = [
 	{
 		accessor: 'action',
 		title: '',
-		render: (recipe) => <BlogActions {...recipe} />,
+		render: (blog) => <BlogActions {...blog} />,
 	},
 ]

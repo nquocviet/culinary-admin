@@ -2,30 +2,28 @@
 
 import React, { useCallback, useState } from 'react'
 import { Button, Flex } from '@mantine/core'
+import { useDisclosure } from '@mantine/hooks'
 import { Plus } from '@phosphor-icons/react'
-import Link from 'next/link'
 
 import { PageTitle, Table } from '@/components'
-import { ROUTES } from '@/config/routes'
-import { BLOG_STATUS } from '@/constants/blog'
 import { PAGE_SIZE } from '@/constants/common'
-import { BLOG_COLUMNS } from '@/lib/columns/blog'
+import { QUOTE_STATUS } from '@/constants/quote'
+import { QUOTE_COLUMNS } from '@/lib/columns/quote'
 
-import { AnalysisCharts, FormFilter } from './components'
+import { FormFilter, ModalAddEditQuote } from './components'
 
 const data = [...Array(10)].map((_, id) => ({
 	id,
-	title: 'Healthy spaghetti bolognese with mushroom',
-	author: {
-		username: 'consectetur.elit',
-		email: 'email@example.com',
-	},
-	categories: [...Array(4)].map(() => 'Healthy food'),
-	status: BLOG_STATUS.PUBLISHED,
+	quote:
+		'Reiciendis tempore cumque natus quis quam vel sapiente aut labore maiores cupiditate sequi laborum obcaetia asis',
+	author: 'Eveniet Incidunt',
+	position: 'Nulla id autem sit',
+	status: QUOTE_STATUS.PUBLISHED,
 	updatedAt: new Date(),
 }))
 
-const ManageBlogsPage = () => {
+const ManageQuotesPage = () => {
+	const [opened, { open, close }] = useDisclosure(false)
 	const [selectedRecords, setSelectedRecords] = useState<any>([])
 
 	const onSubmit = useCallback((data) => console.log(data), [])
@@ -33,18 +31,16 @@ const ManageBlogsPage = () => {
 	return (
 		<Flex direction="column" align="stretch" gap={24}>
 			<Flex justify="space-between" align="center" gap={8}>
-				<PageTitle title="Manage blogs" />
+				<PageTitle title="Manage quotes" />
 				<Button
-					component={Link}
-					href={ROUTES.BLOGS.NEW}
 					color="primary"
 					size="md"
 					leftIcon={<Plus size={20} weight="bold" />}
+					onClick={open}
 				>
-					Add new blog
+					Add new quote
 				</Button>
 			</Flex>
-			<AnalysisCharts />
 			<FormFilter
 				selectedRecords={selectedRecords}
 				setSelectedRecords={setSelectedRecords}
@@ -52,7 +48,7 @@ const ManageBlogsPage = () => {
 			/>
 			<Table
 				records={data}
-				columns={BLOG_COLUMNS}
+				columns={QUOTE_COLUMNS}
 				fetching={false}
 				minWidth={950}
 				totalRecords={data?.length}
@@ -63,8 +59,9 @@ const ManageBlogsPage = () => {
 				selectedRecords={selectedRecords}
 				onSelectedRecordsChange={setSelectedRecords}
 			/>
+			<ModalAddEditQuote opened={opened} onClose={close} />
 		</Flex>
 	)
 }
 
-export default ManageBlogsPage
+export default ManageQuotesPage

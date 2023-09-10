@@ -10,7 +10,7 @@ const ModalAction = ({ children, fluid, ...props }: ModalActionProps) => {
 	return (
 		<Flex
 			justify="flex-end"
-			align="stretch"
+			align="center"
 			gap={12}
 			sx={{
 				marginBottom: rem(-8),

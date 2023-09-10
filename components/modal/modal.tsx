@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { Button, Modal as MantineModal, ModalBaseProps } from '@mantine/core'
 
 import { ModalAction } from '@/components'
@@ -14,6 +14,7 @@ interface ModalProps extends Omit<ModalBaseProps, '__staticSelector'> {
 	closeOnCancel?: boolean
 	cancelText?: string
 	confirmText?: string
+	rightActionSection?: ReactNode
 	onCancel?: () => void
 	onConfirm?: () => void
 }
@@ -27,6 +28,7 @@ const Modal = ({
 	closeOnCancel = true,
 	cancelText = 'Cancel',
 	confirmText = 'Confirm',
+	rightActionSection,
 	onClose,
 	onCancel,
 	onConfirm,
@@ -47,11 +49,19 @@ const Modal = ({
 		>
 			<MantineModal.Overlay />
 			<MantineModal.Content>
-				<MantineModal.Header sx={{ zIndex: 1000 }}>
-					<MantineModal.Title>{title}</MantineModal.Title>
+				<MantineModal.Header px={24} sx={{ zIndex: 1000 }}>
+					<MantineModal.Title
+						sx={{
+							fontSize: 'var(--fs-text-lg)',
+							fontWeight: 'var(--fw-semibold)' as 'bold',
+							fontFamily: 'var(--ff-merriweather)',
+						}}
+					>
+						{title}
+					</MantineModal.Title>
 					<MantineModal.CloseButton size="lg" iconSize={20} />
 				</MantineModal.Header>
-				<MantineModal.Body>{children}</MantineModal.Body>
+				<MantineModal.Body px={24}>{children}</MantineModal.Body>
 				{(cancelText || confirmText) && (
 					<MantineModal.Header
 						sx={{
@@ -64,6 +74,9 @@ const Modal = ({
 						}}
 					>
 						<ModalAction>
+							{rightActionSection && (
+								<div style={{ marginRight: 'auto' }}>{rightActionSection}</div>
+							)}
 							{cancelText && (
 								<Button
 									size="sm"
@@ -82,6 +95,7 @@ const Modal = ({
 							{confirmText && (
 								<Button
 									size="sm"
+									color="primary"
 									onClick={() => {
 										if (closeOnConfirm) {
 											onClose()

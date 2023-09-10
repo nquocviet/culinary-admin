@@ -15,7 +15,7 @@ const PublishSection = () => {
 				<Switch
 					name="published"
 					control={control}
-					label="Public recipe"
+					label="Publish recipe"
 					description="Anyone who sees my profile can see this recipe."
 					size="md"
 				/>
