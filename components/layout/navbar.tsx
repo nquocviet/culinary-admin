@@ -11,8 +11,8 @@ import { SignOut } from '@phosphor-icons/react'
 import Link from 'next/link'
 
 import { AvatarGroup, Logo, MainMenu } from '@/components'
+import { ROUTES } from '@/config/routes'
 import { ASIDE_WIDTH_COLLAPSE, ASIDE_WIDTH_DEFAULT } from '@/constants/layout'
-import { ROUTES } from '@/constants/routes'
 
 interface NavbarProps {
 	opened: boolean

@@ -13,11 +13,11 @@ const RecipeActions = ({ title }) => {
 
 	return (
 		<>
-			<Flex gap={8}>
-				<ActionIcon>
+			<Flex gap={4}>
+				<ActionIcon size="lg">
 					<PencilSimple size={20} />
 				</ActionIcon>
-				<ActionIcon onClick={open}>
+				<ActionIcon size="lg" onClick={open}>
 					<Trash size={20} />
 				</ActionIcon>
 			</Flex>
@@ -44,7 +44,7 @@ export const RECIPE_COLUMNS: MantineDataTableColumn<any> = [
 	{
 		accessor: 'author',
 		title: 'Author',
-		width: '25%',
+		width: '20%',
 		render: ({ author }) => {
 			return (
 				<AvatarGroup title={author.username} description={author.email}>
@@ -56,6 +56,7 @@ export const RECIPE_COLUMNS: MantineDataTableColumn<any> = [
 	{
 		accessor: 'cuisine',
 		title: 'Cuisine',
+		width: '10%',
 		render: ({ cuisine }) => {
 			return <Chip label={cuisine} />
 		},
@@ -63,6 +64,7 @@ export const RECIPE_COLUMNS: MantineDataTableColumn<any> = [
 	{
 		accessor: 'dishes',
 		title: 'Categories',
+		width: '20%',
 		render: ({ dishes }) => {
 			return (
 				<Flex gap={4}>
@@ -94,7 +96,7 @@ export const RECIPE_COLUMNS: MantineDataTableColumn<any> = [
 	{
 		accessor: 'updatedAt',
 		title: 'Last updated',
-		width: 150,
+		width: 165,
 		render: ({ updatedAt }) => {
 			return formatDate(updatedAt)
 		},

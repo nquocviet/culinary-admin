@@ -5,8 +5,8 @@ import { CaretRight } from '@phosphor-icons/react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
+import { ROUTES } from '@/config/routes'
 import { MENU_LIST, MenuItemType } from '@/constants/menu'
-import { ROUTES } from '@/constants/routes'
 import { hasChildren } from '@/utils'
 
 interface SingleMenuProps extends MenuItemType {
@@ -31,7 +31,7 @@ const SingleMenu = ({
 		if (href === ROUTES.HOME) {
 			return pathname === href
 		}
-		return pathname.includes(href)
+		return pathname === href.split('?')[0]
 	}, [pathname, href])
 
 	return (
@@ -49,7 +49,7 @@ const SingleMenu = ({
 				...(highlight &&
 					active && {
 						backgroundColor: 'transparent !important',
-						color: 'var(--primary-700) !important',
+						color: 'var(--primary-800) !important',
 						'&:hover': {
 							backgroundColor: 'var(--gray-50) !important',
 						},

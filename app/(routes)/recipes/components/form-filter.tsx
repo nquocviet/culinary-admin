@@ -36,6 +36,7 @@ const FormFilter = ({
 					<Button
 						color="gray"
 						variant="outline"
+						size="md"
 						leftIcon={<FunnelSimple size={20} />}
 						onClick={toggle}
 					>
@@ -47,6 +48,7 @@ const FormFilter = ({
 								<Button
 									color="gray"
 									variant="outline"
+									size="md"
 									leftIcon={<X size={20} />}
 									onClick={() => setSelectedRecords([])}
 								>
@@ -55,6 +57,7 @@ const FormFilter = ({
 								<Button
 									color="gray"
 									variant="filled"
+									size="md"
 									leftIcon={<Trash size={20} />}
 									onClick={openModal}
 								>
@@ -65,6 +68,7 @@ const FormFilter = ({
 						<TextInput
 							name="q"
 							control={control}
+							size="md"
 							icon={<MagnifyingGlass size={20} />}
 							w={280}
 							placeholder="Search..."
@@ -78,6 +82,7 @@ const FormFilter = ({
 								name="author"
 								control={control}
 								data={[]}
+								size="md"
 								label="Author"
 								placeholder="Select author"
 							/>
@@ -87,6 +92,7 @@ const FormFilter = ({
 								name="cuisines"
 								control={control}
 								data={[]}
+								size="md"
 								label="Cuisines"
 								placeholder="Select cuisines"
 							/>
@@ -96,6 +102,7 @@ const FormFilter = ({
 								name="categories"
 								control={control}
 								data={[]}
+								size="md"
 								label="Categories"
 								placeholder="Select categories"
 							/>
@@ -105,6 +112,7 @@ const FormFilter = ({
 								name="serves"
 								control={control}
 								data={[]}
+								size="md"
 								label="Serves"
 								placeholder="Select serves"
 							/>
@@ -114,6 +122,7 @@ const FormFilter = ({
 								name="status"
 								control={control}
 								data={[]}
+								size="md"
 								label="Status"
 								placeholder="Select status"
 							/>
@@ -123,6 +132,7 @@ const FormFilter = ({
 								name="sortOrder"
 								control={control}
 								data={[]}
+								size="md"
 								label="Sort by"
 								placeholder="Select sort by"
 							/>
@@ -132,13 +142,15 @@ const FormFilter = ({
 						<Button
 							color="gray"
 							variant="outline"
-							leftIcon={<Eraser size={16} weight="bold" />}
+							size="md"
+							leftIcon={<Eraser size={20} weight="bold" />}
 						>
 							Clear all
 						</Button>
 						<Button
 							color="primary"
-							leftIcon={<Check size={16} weight="bold" />}
+							size="md"
+							leftIcon={<Check size={20} weight="bold" />}
 						>
 							Apply
 						</Button>

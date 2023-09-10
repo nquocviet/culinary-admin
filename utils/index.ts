@@ -34,3 +34,21 @@ export const formatNumber = (
 ) => {
 	return num.toLocaleString(locales, options)
 }
+
+export const uuid = (): number => {
+	const time = new Date().getTime()
+	const array = time.toString().split('')
+	let currentIndex = array.length
+	let randomIndex
+
+	while (currentIndex !== 0) {
+		randomIndex = Math.floor(Math.random() * currentIndex)
+		currentIndex--
+		;[array[currentIndex], array[randomIndex]] = [
+			array[randomIndex],
+			array[currentIndex],
+		]
+	}
+
+	return Number(array.join(''))
+}

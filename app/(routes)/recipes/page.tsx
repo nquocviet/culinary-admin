@@ -3,8 +3,10 @@
 import React, { useCallback, useState } from 'react'
 import { Button, Flex } from '@mantine/core'
 import { Plus } from '@phosphor-icons/react'
+import Link from 'next/link'
 
 import { PageTitle, Table } from '@/components'
+import { ROUTES } from '@/config/routes'
 import { PAGE_SIZE } from '@/constants/common'
 import { RECIPE_STATUS } from '@/constants/recipe'
 import { RECIPE_COLUMNS } from '@/lib/columns/recipe'
@@ -33,7 +35,13 @@ const ManageRecipesPage = () => {
 		<Flex direction="column" align="stretch" gap={24}>
 			<Flex justify="space-between" align="center" gap={8}>
 				<PageTitle title="Manage recipes" />
-				<Button color="primary" leftIcon={<Plus size={16} weight="bold" />}>
+				<Button
+					component={Link}
+					href={ROUTES.RECIPES.NEW}
+					color="primary"
+					size="md"
+					leftIcon={<Plus size={20} weight="bold" />}
+				>
 					Add new recipe
 				</Button>
 			</Flex>
@@ -51,6 +59,7 @@ const ManageRecipesPage = () => {
 				totalRecords={data?.length}
 				recordsPerPage={PAGE_SIZE}
 				page={1}
+				paginationSize="md"
 				onPageChange={() => null}
 				selectedRecords={selectedRecords}
 				onSelectedRecordsChange={setSelectedRecords}
