@@ -91,8 +91,11 @@ export const components: any = {
 				padding: `${rem(8)} ${rem(14)}`,
 			},
 			content: {
-				minHeight: rem(120),
+				'&:has(.is-editor-empty)': {
+					height: '1px',
+				},
 				'& > div': {
+					height: '100% !important',
 					paddingLeft: `${rem(14)} !important`,
 					paddingRight: `${rem(14)} !important`,
 				},

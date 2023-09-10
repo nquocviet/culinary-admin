@@ -1,5 +1,6 @@
 import React from 'react'
 import { FieldValues, Path, SetFieldValue } from 'react-hook-form'
+import { rem } from '@mantine/core'
 import { Link, RichTextEditor as MantineRichTextEditor } from '@mantine/tiptap'
 import {
 	ImageSquare,
@@ -31,6 +32,7 @@ interface RichTextEditorProps<T extends FieldValues> {
 	name: Path<T>
 	label?: string
 	placeholder?: string
+	minHeight?: number
 	content: Content
 	setValue: SetFieldValue<T>
 }
@@ -55,6 +57,7 @@ const RichTextEditor = <T extends FieldValues>({
 	name,
 	label,
 	placeholder = '',
+	minHeight = 120,
 	content,
 	setValue,
 }: RichTextEditorProps<T>) => {
@@ -77,7 +80,15 @@ const RichTextEditor = <T extends FieldValues>({
 	return (
 		<div>
 			{label && <Label text={label} />}
-			<MantineRichTextEditor editor={editor} spellCheck={false}>
+			<MantineRichTextEditor
+				editor={editor}
+				spellCheck={false}
+				styles={{
+					content: {
+						minHeight: rem(minHeight),
+					},
+				}}
+			>
 				<MantineRichTextEditor.Toolbar sticky stickyOffset={60}>
 					<MantineRichTextEditor.ControlsGroup>
 						<MantineRichTextEditor.H2 icon={IconTextH} />
