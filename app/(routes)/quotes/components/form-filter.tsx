@@ -7,40 +7,40 @@ import { MagnifyingGlass, Trash, X } from '@phosphor-icons/react'
 import { ModalConfirm, TextInput } from '@/components'
 
 interface FormFilterProps {
+	onSubmit: (data) => void
 	selectedRecords: any[]
 	setSelectedRecords: Dispatch<SetStateAction<any[]>>
-	onSubmit: (data) => void
 }
 
 const FormFilter = ({
+	onSubmit,
 	selectedRecords,
 	setSelectedRecords,
-	onSubmit,
 }: FormFilterProps) => {
-	const [modalOpened, { open: openModal, close: closeModal }] =
+	const [modalOpened, { close: closeModal, open: openModal }] =
 		useDisclosure(false)
 	const { control, handleSubmit } = useForm()
 
 	return (
 		<>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<Flex justify="flex-end" align="stretch" gap={12}>
+				<Flex align="stretch" gap={12} justify="flex-end">
 					{Boolean(selectedRecords.length) && (
 						<>
 							<Button
 								color="gray"
-								variant="outline"
-								size="md"
 								leftIcon={<X size={20} />}
+								size="md"
+								variant="outline"
 								onClick={() => setSelectedRecords([])}
 							>
 								Cancel
 							</Button>
 							<Button
 								color="gray"
-								variant="filled"
-								size="md"
 								leftIcon={<Trash size={20} />}
+								size="md"
+								variant="filled"
 								onClick={openModal}
 							>
 								Delete selected
@@ -48,21 +48,21 @@ const FormFilter = ({
 						</>
 					)}
 					<TextInput
-						name="q"
 						control={control}
-						size="md"
 						icon={<MagnifyingGlass size={20} />}
-						w={280}
+						name="q"
 						placeholder="Search..."
+						size="md"
+						w={280}
 					/>
 				</Flex>
 			</form>
 			<ModalConfirm
-				opened={modalOpened}
-				onClose={closeModal}
-				title="Delete all quotes selected"
-				message="Are you sure you want to delete those quotes? This action cannot be undone."
 				confirmText="Delete"
+				message="Are you sure you want to delete those quotes? This action cannot be undone."
+				opened={modalOpened}
+				title="Delete all quotes selected"
+				onClose={closeModal}
 			/>
 		</>
 	)

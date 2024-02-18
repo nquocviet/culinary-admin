@@ -9,9 +9,9 @@ import { MantineDataTableColumn } from '@/types'
 import { formatDate } from '@/utils'
 
 const QuoteActions = (quote) => {
-	const [deleteOpened, { open: openDelete, close: closeDelete }] =
+	const [deleteOpened, { close: closeDelete, open: openDelete }] =
 		useDisclosure(false)
-	const [editOpened, { open: openEdit, close: closeEdit }] =
+	const [editOpened, { close: closeEdit, open: openEdit }] =
 		useDisclosure(false)
 
 	return (
@@ -25,15 +25,15 @@ const QuoteActions = (quote) => {
 				</ActionIcon>
 			</Flex>
 			<ModalConfirm
-				opened={deleteOpened}
-				onClose={closeDelete}
-				title={`Delete quote: “${quote.quote}”`}
-				message="Are you sure you want to delete this quote? This action cannot be undone."
 				confirmText="Delete"
+				message="Are you sure you want to delete this quote? This action cannot be undone."
+				opened={deleteOpened}
+				title={`Delete quote: “${quote.quote}”`}
+				onClose={closeDelete}
 			/>
 			<ModalAddEditQuote
-				quote={quote}
 				opened={editOpened}
+				quote={quote}
 				onClose={closeEdit}
 			/>
 		</>
@@ -43,11 +43,11 @@ const QuoteActions = (quote) => {
 export const QUOTE_COLUMNS: MantineDataTableColumn<any> = [
 	{
 		accessor: 'quote',
-		title: 'Quote',
-		width: '35%',
 		render: ({ quote }) => {
 			return <p className="line-clamp-2">{quote}</p>
 		},
+		title: 'Quote',
+		width: '35%',
 	},
 	{
 		accessor: 'author',
@@ -61,8 +61,6 @@ export const QUOTE_COLUMNS: MantineDataTableColumn<any> = [
 	},
 	{
 		accessor: 'status',
-		title: 'Status',
-		width: 100,
 		render: ({ status }) => {
 			switch (status) {
 				case QUOTE_STATUS.DRAFT:
@@ -73,18 +71,20 @@ export const QUOTE_COLUMNS: MantineDataTableColumn<any> = [
 					return '-'
 			}
 		},
+		title: 'Status',
+		width: 100,
 	},
 	{
 		accessor: 'updatedAt',
-		title: 'Last updated',
-		width: 165,
 		render: ({ updatedAt }) => {
 			return formatDate(updatedAt)
 		},
+		title: 'Last updated',
+		width: 165,
 	},
 	{
 		accessor: 'action',
-		title: '',
 		render: (quote) => <QuoteActions {...quote} />,
+		title: '',
 	},
 ]

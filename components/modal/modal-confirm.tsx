@@ -6,42 +6,42 @@ import { WarningCircle } from '@phosphor-icons/react'
 import { HighlightIcon, ModalAction } from '@/components'
 
 interface ModalConfirmProps extends Omit<ModalBaseProps, '__staticSelector'> {
-	title: string
-	message: ReactNode
-	closeOnConfirm?: boolean
-	closeOnCancel?: boolean
 	cancelText?: string
+	closeOnCancel?: boolean
+	closeOnConfirm?: boolean
 	confirmText?: string
+	message: ReactNode
 	onCancel?: () => void
 	onConfirm?: () => void
+	title: string
 }
 
 const ModalConfirm = ({
-	title,
-	message,
-	closeOnConfirm = false,
-	closeOnCancel = true,
 	cancelText = 'Cancel',
+	closeOnCancel = true,
+	closeOnConfirm = false,
 	confirmText = 'Yes, confirm',
-	opened,
-	onClose,
+	message,
 	onCancel,
+	onClose,
 	onConfirm,
+	opened,
+	title,
 	...props
 }: ModalConfirmProps) => {
 	return (
 		<MantineModal.Root
 			{...props}
-			size="md"
 			opened={opened}
-			onClose={onClose}
+			size="md"
 			transitionProps={{
-				transition: 'fade',
 				duration: 225,
 				timingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
+				transition: 'fade',
 			}}
 			centered
 			lockScroll
+			onClose={onClose}
 		>
 			<MantineModal.Overlay />
 			<MantineModal.Content>
@@ -50,18 +50,18 @@ const ModalConfirm = ({
 					sx={{ alignItems: 'flex-start', zIndex: 1000 }}
 				>
 					<MantineModal.Title>
-						<HighlightIcon color="red" size="lg" icon={WarningCircle} />
+						<HighlightIcon color="red" icon={WarningCircle} size="lg" />
 					</MantineModal.Title>
-					<MantineModal.CloseButton size="lg" iconSize={24} />
+					<MantineModal.CloseButton iconSize={24} size="lg" />
 				</MantineModal.Header>
 				<MantineModal.Body px={24}>
 					<Text
+						className="line-clamp-2"
 						sx={{
 							fontSize: 'var(--fs-text-lg)',
 							fontWeight: 'var(--fw-medium)' as 'normal',
 							marginBottom: rem(8),
 						}}
-						className="line-clamp-2"
 					>
 						{title}
 					</Text>
@@ -76,18 +76,18 @@ const ModalConfirm = ({
 				</MantineModal.Body>
 				<MantineModal.Header
 					sx={{
-						zIndex: 1000,
-						top: 'unset',
 						bottom: 0,
-						paddingTop: 0,
 						paddingLeft: 0,
 						paddingRight: 0,
+						paddingTop: 0,
+						top: 'unset',
+						zIndex: 1000,
 					}}
 				>
 					<ModalAction fluid>
 						<Button
-							size="md"
 							color="gray"
+							size="md"
 							variant="outline"
 							onClick={() => {
 								if (closeOnCancel) {
@@ -99,8 +99,8 @@ const ModalConfirm = ({
 							{cancelText}
 						</Button>
 						<Button
-							size="md"
 							color="red"
+							size="md"
 							onClick={() => {
 								if (closeOnConfirm) {
 									onClose()

@@ -22,9 +22,12 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
 
 	return (
 		<AppShell
+			footer={<Footer opened={opened} />}
+			layout="alt"
+			navbar={<Navbar opened={opened} toggle={toggle} />}
 			styles={{
-				root: {
-					minHeight: '100vh',
+				body: {
+					overflow: 'hidden',
 				},
 				main: {
 					background:
@@ -35,22 +38,19 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
 					paddingBottom: '1rem',
 					paddingLeft: `calc(${asideWidth} + ${rem(16)})`,
 				},
-				body: {
-					overflow: 'hidden',
+				root: {
+					minHeight: '100vh',
 				},
 			}}
-			layout="alt"
-			navbar={<Navbar opened={opened} toggle={toggle} />}
-			footer={<Footer opened={opened} />}
 		>
 			<Container
 				py={16}
 				sx={{
+					alignItems: 'stretch',
 					display: 'flex',
 					flexDirection: 'column',
-					alignItems: 'stretch',
-					height: '100%',
 					gap: rem(24),
+					height: '100%',
 				}}
 				fluid
 			>

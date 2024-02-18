@@ -18,12 +18,12 @@ interface MainMenuProps {
 }
 
 const SingleMenu = ({
-	label,
+	highlight,
 	href,
 	icon: Icon,
-	sx,
-	highlight,
+	label,
 	opened,
+	sx,
 }: SingleMenuProps) => {
 	const pathname = usePathname()
 	const active = useMemo(() => {
@@ -37,22 +37,22 @@ const SingleMenu = ({
 	return (
 		<NavLink
 			active={active}
+			color="gray"
 			component={Link}
 			href={href || ''}
-			color="gray"
 			label={opened ? label : ''}
 			sx={{
 				borderRadius: rem(6),
-				lineHeight: rem(24),
 				fontWeight: 'var(--fw-medium)' as 'normal',
+				lineHeight: rem(24),
 				...sx,
 				...(highlight &&
 					active && {
-						backgroundColor: 'transparent !important',
-						color: 'var(--primary-800) !important',
 						'&:hover': {
 							backgroundColor: 'var(--gray-50) !important',
 						},
+						backgroundColor: 'transparent !important',
+						color: 'var(--primary-800) !important',
 					}),
 			}}
 			{...(!opened && {
@@ -69,7 +69,7 @@ const SingleMenu = ({
 	)
 }
 
-const NestedMenu = ({ label, icon: Icon, children, opened }: MenuItemType) => {
+const NestedMenu = ({ children, icon: Icon, label, opened }: MenuItemType) => {
 	const pathname = usePathname()
 	const active = useMemo(() => {
 		return children?.some(({ href }) => {
@@ -89,12 +89,12 @@ const NestedMenu = ({ label, icon: Icon, children, opened }: MenuItemType) => {
 	if (!opened) {
 		return (
 			<Menu
+				opened={menuOpened}
+				position="right-start"
 				shadow="md"
 				width={180}
-				position="right-start"
-				opened={menuOpened}
-				onChange={setMenuOpened}
 				withinPortal
+				onChange={setMenuOpened}
 			>
 				<Menu.Target>
 					<NavLink
@@ -103,8 +103,8 @@ const NestedMenu = ({ label, icon: Icon, children, opened }: MenuItemType) => {
 						label={opened ? label : ''}
 						sx={{
 							borderRadius: rem(6),
-							lineHeight: rem(24),
 							fontWeight: 'var(--fw-medium)' as 'normal',
+							lineHeight: rem(24),
 						}}
 						{...(Icon && {
 							icon: <Icon size={24} weight={active ? 'fill' : 'regular'} />,
@@ -131,12 +131,12 @@ const NestedMenu = ({ label, icon: Icon, children, opened }: MenuItemType) => {
 				active={active}
 				color="gray"
 				label={opened ? label : ''}
-				onClick={toggle}
 				sx={{
 					borderRadius: rem(6),
-					lineHeight: rem(24),
 					fontWeight: 'var(--fw-medium)' as 'normal',
+					lineHeight: rem(24),
 				}}
+				onClick={toggle}
 				{...(Icon && {
 					icon: <Icon size={24} weight={active ? 'fill' : 'regular'} />,
 				})}
@@ -157,8 +157,8 @@ const NestedMenu = ({ label, icon: Icon, children, opened }: MenuItemType) => {
 					{children.map((item) => (
 						<SingleMenu
 							key={item.label}
-							sx={{ paddingLeft: rem(48) }}
 							opened={opened}
+							sx={{ paddingLeft: rem(48) }}
 							highlight
 							{...item}
 						/>
@@ -178,8 +178,8 @@ const MenuItem = (props: MenuItemType) => {
 const MainMenu = ({ opened }: MainMenuProps) => {
 	return (
 		<Flex
-			direction="column"
 			align="stretch"
+			direction="column"
 			gap={6}
 			sx={{
 				marginLeft: '-1px',

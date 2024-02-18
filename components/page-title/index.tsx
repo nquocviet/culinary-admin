@@ -2,33 +2,33 @@ import React from 'react'
 import { Divider, Title, TitleProps } from '@mantine/core'
 
 interface PageTitleProps extends TitleProps {
-	title: string
 	divider?: boolean
+	title: string
 }
 
 const PageTitle = ({
-	title,
-	order = 1,
 	divider = false,
+	order = 1,
+	title,
 	...props
 }: PageTitleProps) => {
 	if (divider)
 		return (
 			<Divider
-				labelPosition="left"
 				label={
 					<Title
 						{...props}
 						order={order}
 						sx={{
-							fontSize: 'var(--fs-display-xs)',
 							fontFamily: 'var(--ff-merriweather)',
+							fontSize: 'var(--fs-display-xs)',
 							...props.sx,
 						}}
 					>
 						{title}
 					</Title>
 				}
+				labelPosition="left"
 			/>
 		)
 
@@ -37,8 +37,8 @@ const PageTitle = ({
 			{...props}
 			order={order}
 			sx={{
-				fontSize: 'var(--fs-display-sm)',
 				fontFamily: 'var(--ff-merriweather)',
+				fontSize: 'var(--fs-display-sm)',
 				fontWeight: 'var(--fw-bold)' as 'normal',
 				...props.sx,
 			}}

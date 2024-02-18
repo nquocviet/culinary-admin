@@ -14,8 +14,8 @@ interface NumberInputProps<T extends FieldValues>
 	extends MantineNumberInputProps {
 	control: Control<T>
 	name: Path<T>
-	textIcon?: string
 	rightText?: string
+	textIcon?: string
 }
 
 const IGNORE_CHARACTER = ['e', 'E', '-', '+']
@@ -23,8 +23,8 @@ const IGNORE_CHARACTER = ['e', 'E', '-', '+']
 const NumberInput = <T extends FieldValues>({
 	control,
 	name,
-	textIcon,
 	rightText,
+	textIcon,
 	...rest
 }: NumberInputProps<T>) => {
 	const handlers = useRef<NumberInputHandlers>()
@@ -37,14 +37,14 @@ const NumberInput = <T extends FieldValues>({
 				<MantineNumberInput
 					{...field}
 					{...rest}
-					value={field.value}
-					type="number"
+					handlersRef={handlers}
 					styles={() => ({
 						input: {
 							paddingRight: '3.25rem',
 						},
 					})}
-					handlersRef={handlers}
+					type="number"
+					value={field.value}
 					onKeyDown={(event) => {
 						if (IGNORE_CHARACTER.includes(event.key)) {
 							event.preventDefault()
@@ -56,9 +56,9 @@ const NumberInput = <T extends FieldValues>({
 						styles: {
 							...rest.styles,
 							icon: {
-								left: 4,
 								color: 'var(--gray-400)',
 								fontSize: 'var(--fs-text-sm)',
+								left: 4,
 							},
 						},
 					})}
@@ -67,12 +67,12 @@ const NumberInput = <T extends FieldValues>({
 								rightSection: (
 									<Text
 										sx={{
-											display: 'inline-flex',
 											alignItems: 'center',
-											height: '100%',
+											borderLeft: '1px solid var(--gray-300)',
+											display: 'inline-flex',
 											fontSize: 'var(--fs-text-sm)',
 											fontWeight: 'var(--fw-medium)' as 'normal',
-											borderLeft: '1px solid var(--gray-300)',
+											height: '100%',
 											paddingLeft: rem(14),
 											paddingRight: rem(14),
 											whiteSpace: 'nowrap',

@@ -22,24 +22,24 @@ interface NavbarProps {
 const Navbar = ({ opened, toggle }: NavbarProps) => {
 	return (
 		<MantineNavbar
-			p="md"
-			hiddenBreakpoint="sm"
 			hidden={!opened}
+			hiddenBreakpoint="sm"
+			p="md"
 			w={opened ? ASIDE_WIDTH_DEFAULT : ASIDE_WIDTH_COLLAPSE}
 		>
 			<Flex
 				align="center"
 				gap={12}
 				sx={{
-					marginBottom: rem(20),
 					height: rem(45),
+					marginBottom: rem(20),
 					paddingLeft: rem(8),
 					paddingRight: rem(8),
 				}}
 			>
 				<Burger
-					size={20}
 					opened={false}
+					size={20}
 					sx={{ flexShrink: 0 }}
 					onClick={toggle}
 				/>
@@ -56,20 +56,20 @@ const Navbar = ({ opened, toggle }: NavbarProps) => {
 				align="center"
 				gap={8}
 				sx={{
+					borderTop: '1px solid var(--gray-200)',
 					marginLeft: rem(-16),
 					marginRight: rem(-16),
 					marginTop: rem(16),
-					borderTop: '1px solid var(--gray-200)',
 					padding: `${rem(24)} ${rem(24)} ${rem(8)}`,
 				}}
 			>
 				{opened && (
 					<AvatarGroup
-						title="Username"
 						description="email.example@gmail.com"
 						sx={{
 							flexGrow: 1,
 						}}
+						title="Username"
 					>
 						US
 					</AvatarGroup>

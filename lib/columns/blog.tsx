@@ -9,7 +9,7 @@ import { MantineDataTableColumn } from '@/types'
 import { formatDate } from '@/utils'
 
 const BlogActions = ({ title }) => {
-	const [opened, { open, close }] = useDisclosure(false)
+	const [opened, { close, open }] = useDisclosure(false)
 
 	return (
 		<>
@@ -22,11 +22,11 @@ const BlogActions = ({ title }) => {
 				</ActionIcon>
 			</Flex>
 			<ModalConfirm
-				opened={opened}
-				onClose={close}
-				title={`Delete blog: “${title}”`}
-				message="Are you sure you want to delete this blog? This action cannot be undone."
 				confirmText="Delete"
+				message="Are you sure you want to delete this blog? This action cannot be undone."
+				opened={opened}
+				title={`Delete blog: “${title}”`}
+				onClose={close}
 			/>
 		</>
 	)
@@ -35,28 +35,26 @@ const BlogActions = ({ title }) => {
 export const BLOG_COLUMNS: MantineDataTableColumn<any> = [
 	{
 		accessor: 'title',
-		title: 'Post title',
-		width: '30%',
 		render: ({ title }) => {
 			return <p className="line-clamp-1">{title}</p>
 		},
+		title: 'Post title',
+		width: '30%',
 	},
 	{
 		accessor: 'author',
-		title: 'Author',
-		width: '20%',
 		render: ({ author }) => {
 			return (
-				<AvatarGroup title={author.username} description={author.email}>
+				<AvatarGroup description={author.email} title={author.username}>
 					EX
 				</AvatarGroup>
 			)
 		},
+		title: 'Author',
+		width: '20%',
 	},
 	{
 		accessor: 'categories',
-		title: 'Categories',
-		width: '20%',
 		render: ({ categories }) => {
 			return (
 				<Flex gap={4}>
@@ -69,11 +67,11 @@ export const BLOG_COLUMNS: MantineDataTableColumn<any> = [
 				</Flex>
 			)
 		},
+		title: 'Categories',
+		width: '20%',
 	},
 	{
 		accessor: 'status',
-		title: 'Status',
-		width: 100,
 		render: ({ status }) => {
 			switch (status) {
 				case BLOG_STATUS.DRAFT:
@@ -84,18 +82,20 @@ export const BLOG_COLUMNS: MantineDataTableColumn<any> = [
 					return '-'
 			}
 		},
+		title: 'Status',
+		width: 100,
 	},
 	{
 		accessor: 'updatedAt',
-		title: 'Last updated',
-		width: 165,
 		render: ({ updatedAt }) => {
 			return formatDate(updatedAt)
 		},
+		title: 'Last updated',
+		width: 165,
 	},
 	{
 		accessor: 'action',
-		title: '',
 		render: (blog) => <BlogActions {...blog} />,
+		title: '',
 	},
 ]

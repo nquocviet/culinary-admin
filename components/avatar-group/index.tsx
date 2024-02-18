@@ -2,39 +2,39 @@ import React from 'react'
 import { Avatar, AvatarProps, Flex, Text } from '@mantine/core'
 
 interface AvatarGroupProps extends AvatarProps {
+	className?: string
+	description?: string
 	spacing?: number
 	title: string
-	description?: string
-	className?: string
 }
 
 const AvatarGroup = ({
+	className,
+	description,
 	spacing = 10,
 	title,
-	description,
-	className,
 	...props
 }: AvatarGroupProps) => {
 	return (
-		<Flex align="center" gap={spacing} className={className}>
-			<Avatar size="md" radius="xl" color="gray" {...props} />
+		<Flex align="center" className={className} gap={spacing}>
+			<Avatar color="gray" radius="xl" size="md" {...props} />
 			<div>
 				<Text
+					className="line-clamp-1"
 					sx={{
 						fontSize: 'var(--fs-text-sm)',
 						fontWeight: 'var(--fw-medium)' as 'normal',
 					}}
-					className="line-clamp-1"
 				>
 					{title}
 				</Text>
 				{description && (
 					<Text
-						sx={{
-							fontSize: 'var(--fs-text-xs)',
-							color: 'var(--gray-600)',
-						}}
 						className="line-clamp-1"
+						sx={{
+							color: 'var(--gray-600)',
+							fontSize: 'var(--fs-text-xs)',
+						}}
 					>
 						{description}
 					</Text>

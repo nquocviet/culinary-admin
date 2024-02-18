@@ -14,15 +14,15 @@ import { RECIPE_COLUMNS } from '@/lib/columns/recipe'
 import { AnalysisCharts, FormFilter } from './components'
 
 const data = [...Array(10)].map((_, id) => ({
-	id,
-	title: 'Egg salad sandwich with avocado and tomato',
 	author: {
-		username: 'consectetur.elit',
 		email: 'email@example.com',
+		username: 'consectetur.elit',
 	},
 	cuisine: 'Central Asia',
 	dishes: [...Array(4)].map(() => 'Breakfast'),
+	id,
 	status: RECIPE_STATUS.PUBLISHED,
+	title: 'Egg salad sandwich with avocado and tomato',
 	updatedAt: new Date(),
 }))
 
@@ -32,15 +32,15 @@ const ManageRecipesPage = () => {
 	const onSubmit = useCallback((data) => console.log(data), [])
 
 	return (
-		<Flex direction="column" align="stretch" gap={24}>
-			<Flex justify="space-between" align="center" gap={8}>
+		<Flex align="stretch" direction="column" gap={24}>
+			<Flex align="center" gap={8} justify="space-between">
 				<PageTitle title="Manage recipes" />
 				<Button
+					color="primary"
 					component={Link}
 					href={ROUTES.RECIPES.NEW}
-					color="primary"
-					size="md"
 					leftIcon={<Plus size={20} weight="bold" />}
+					size="md"
 				>
 					Add new recipe
 				</Button>
@@ -52,16 +52,16 @@ const ManageRecipesPage = () => {
 				onSubmit={onSubmit}
 			/>
 			<Table
-				records={data}
 				columns={RECIPE_COLUMNS}
 				fetching={false}
 				minWidth={950}
-				totalRecords={data?.length}
-				recordsPerPage={PAGE_SIZE}
 				page={1}
 				paginationSize="md"
-				onPageChange={() => null}
+				records={data}
+				recordsPerPage={PAGE_SIZE}
 				selectedRecords={selectedRecords}
+				totalRecords={data?.length}
+				onPageChange={() => null}
 				onSelectedRecordsChange={setSelectedRecords}
 			/>
 		</Flex>

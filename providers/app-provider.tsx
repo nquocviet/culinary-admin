@@ -19,13 +19,13 @@ const AppProvider = ({ children }: AppProviderProps) => {
 	return (
 		<CacheProvider value={cache}>
 			<MantineProvider
+				emotionCache={cache}
 				theme={{
 					colors: COLORS_THEME,
+					components,
 					fontFamily: 'inherit',
 					primaryColor: 'primary',
-					components,
 				}}
-				emotionCache={cache}
 				withGlobalStyles
 				withNormalizeCSS
 			>

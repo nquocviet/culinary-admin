@@ -8,29 +8,29 @@ const AnalysisCharts = () => {
 		<Grid gutter={24}>
 			<Grid.Col span={4}>
 				<AnalysisGroup
-					title="Total recipes"
-					total={2250}
+					comparison="month"
 					percent={40}
 					status="increase"
-					comparison="month"
+					title="Total recipes"
+					total={2250}
 				/>
 			</Grid.Col>
 			<Grid.Col span={4}>
 				<AnalysisGroup
-					title="Today's recipes"
-					total={17}
+					comparison="day"
 					percent={10}
 					status="decline"
-					comparison="day"
+					title="Today's recipes"
+					total={17}
 				/>
 			</Grid.Col>
 			<Grid.Col span={4}>
 				<AnalysisGroup
-					title="Today's views"
-					total={128}
+					comparison="day"
 					percent={26}
 					status="increase"
-					comparison="day"
+					title="Today's views"
+					total={128}
 				/>
 			</Grid.Col>
 		</Grid>

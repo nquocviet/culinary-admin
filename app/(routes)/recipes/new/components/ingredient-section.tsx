@@ -13,8 +13,8 @@ const createNewIngredient = (
 ) => {
 	const ingredient = {
 		id: uuid(),
-		type,
 		title: '',
+		type,
 	}
 
 	return ingredient
@@ -22,7 +22,7 @@ const createNewIngredient = (
 
 const IngredientSection = () => {
 	const { control } = useFormContext()
-	const { fields, append, remove, replace } = useFieldArray({
+	const { append, fields, remove, replace } = useFieldArray({
 		control,
 		name: 'ingredients',
 	})
@@ -38,18 +38,18 @@ const IngredientSection = () => {
 	}
 
 	return (
-		<Flex direction="column" align="stretch" gap={16}>
+		<Flex align="stretch" direction="column" gap={16}>
 			<PageTitle order={2} title="Ingredients" divider />
 			<Text>
 				Enter ingredients below or{' '}
 				<Text
-					role="button"
 					component="span"
+					role="button"
 					sx={{
-						display: 'inline-block',
-						cursor: 'pointer',
-						fontWeight: 'var(--fw-medium)' as 'normal',
 						color: 'var(--primary-800)',
+						cursor: 'pointer',
+						display: 'inline-block',
+						fontWeight: 'var(--fw-medium)' as 'normal',
 					}}
 				>
 					Add several at once
@@ -60,24 +60,24 @@ const IngredientSection = () => {
 					<Droppable droppableId="ingredients">
 						{(provided) => (
 							<Flex
-								direction="column"
 								align="stretch"
+								direction="column"
 								gap={16}
 								{...provided.droppableProps}
 								ref={provided.innerRef}
 							>
 								{fields.map((ingredient: any, index) => (
 									<Draggable
-										key={ingredient.id}
 										draggableId={ingredient.id}
 										index={index}
+										key={ingredient.id}
 									>
 										{(provided) => (
 											<Flex
 												align="center"
-												wrap="nowrap"
 												gap={8}
 												ref={provided.innerRef}
+												wrap="nowrap"
 												{...provided.draggableProps}
 												{...provided.dragHandleProps}
 											>
@@ -85,17 +85,14 @@ const IngredientSection = () => {
 													<DotsSixVertical size={20} weight="bold" />
 												</ActionIcon>
 												<TextInput
-													name={`ingredients[${index}].title`}
-													size="md"
 													control={control}
+													name={`ingredients[${index}].title`}
 													placeholder={
 														ingredient.type === INGREDIENT_TYPES.HEADER
 															? 'Add header, e.g. Sauce'
 															: 'Add ingredient, e.g.  0.5 lb. shrimp'
 													}
-													sx={{
-														flexGrow: 1,
-													}}
+													size="md"
 													styles={() => ({
 														input: {
 															...(ingredient.type ===
@@ -106,6 +103,9 @@ const IngredientSection = () => {
 															}),
 														},
 													})}
+													sx={{
+														flexGrow: 1,
+													}}
 												/>
 												<ActionIcon onClick={() => remove(index)}>
 													<MinusCircle size={20} />
@@ -123,18 +123,18 @@ const IngredientSection = () => {
 			<Flex gap={16}>
 				<Button
 					color="gray"
-					variant="outline"
-					size="md"
 					leftIcon={<Plus size={20} />}
+					size="md"
+					variant="outline"
 					onClick={() => append(createNewIngredient(INGREDIENT_TYPES.HEADER))}
 				>
 					Add new header
 				</Button>
 				<Button
 					color="gray"
-					variant="outline"
-					size="md"
 					leftIcon={<Plus size={20} />}
+					size="md"
+					variant="outline"
 					onClick={() => append(createNewIngredient(INGREDIENT_TYPES.ITEM))}
 				>
 					Add new ingredients

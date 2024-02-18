@@ -4,73 +4,73 @@ import { Button, Modal as MantineModal, ModalBaseProps } from '@mantine/core'
 import { ModalAction } from '@/components'
 
 export type ModalOpenedProps = {
-	opened: boolean
 	onClose: (value?: React.SetStateAction<boolean>) => void
+	opened: boolean
 }
 
 interface ModalProps extends Omit<ModalBaseProps, '__staticSelector'> {
-	centered?: boolean
-	closeOnConfirm?: boolean
-	closeOnCancel?: boolean
 	cancelText?: string
+	centered?: boolean
+	closeOnCancel?: boolean
+	closeOnConfirm?: boolean
 	confirmText?: string
-	rightActionSection?: ReactNode
 	onCancel?: () => void
 	onConfirm?: () => void
+	rightActionSection?: ReactNode
 }
 
 const Modal = ({
-	title,
-	children,
-	opened,
-	centered,
-	closeOnConfirm = false,
-	closeOnCancel = true,
 	cancelText = 'Cancel',
+	centered,
+	children,
+	closeOnCancel = true,
+	closeOnConfirm = false,
 	confirmText = 'Confirm',
-	rightActionSection,
-	onClose,
 	onCancel,
+	onClose,
 	onConfirm,
+	opened,
+	rightActionSection,
+	title,
 	...rest
 }: ModalProps) => {
 	return (
 		<MantineModal.Root
 			{...rest}
-			opened={opened}
-			onClose={onClose}
 			centered={centered ?? true}
+			opened={opened}
 			transitionProps={{
-				transition: 'fade',
 				duration: 225,
 				timingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
+				transition: 'fade',
 			}}
 			lockScroll
+			onClose={onClose}
 		>
 			<MantineModal.Overlay />
 			<MantineModal.Content>
 				<MantineModal.Header px={24} sx={{ zIndex: 1000 }}>
 					<MantineModal.Title
 						sx={{
+							fontFamily: 'var(--ff-merriweather)',
 							fontSize: 'var(--fs-text-lg)',
 							fontWeight: 'var(--fw-semibold)' as 'bold',
-							fontFamily: 'var(--ff-merriweather)',
 						}}
 					>
 						{title}
 					</MantineModal.Title>
-					<MantineModal.CloseButton size="lg" iconSize={20} />
+					<MantineModal.CloseButton iconSize={20} size="lg" />
 				</MantineModal.Header>
 				<MantineModal.Body px={24}>{children}</MantineModal.Body>
 				{(cancelText || confirmText) && (
 					<MantineModal.Header
 						sx={{
-							zIndex: 1000,
-							top: 'unset',
 							bottom: 0,
-							paddingTop: 0,
 							paddingLeft: 0,
 							paddingRight: 0,
+							paddingTop: 0,
+							top: 'unset',
+							zIndex: 1000,
 						}}
 					>
 						<ModalAction>
@@ -79,8 +79,8 @@ const Modal = ({
 							)}
 							{cancelText && (
 								<Button
-									size="sm"
 									color="gray"
+									size="sm"
 									variant="outline"
 									onClick={() => {
 										if (closeOnCancel) {
@@ -94,8 +94,8 @@ const Modal = ({
 							)}
 							{confirmText && (
 								<Button
-									size="sm"
 									color="primary"
+									size="sm"
 									onClick={() => {
 										if (closeOnConfirm) {
 											onClose()

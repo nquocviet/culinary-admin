@@ -11,11 +11,11 @@ interface ChipProps {
 const useStyles = createStyles(
 	(_, { variant }: Pick<ChipProps, 'variant'>) => ({
 		wrapper: {
-			display: 'inline-block',
 			borderRadius: rem(6),
-			padding: `${rem(2)} ${rem(6)}`,
+			display: 'inline-block',
 			fontSize: 'var(--fs-text-xs)',
 			fontWeight: 'var(--fw-medium)' as 'normal',
+			padding: `${rem(2)} ${rem(6)}`,
 			whiteSpace: 'nowrap',
 			...(variant === 'outline' && {
 				border: '1px solid var(--gray-300)',

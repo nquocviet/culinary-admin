@@ -18,8 +18,8 @@ const NewBlogPage = () => {
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
-			<Flex direction="column" align="stretch" gap={24}>
-				<Flex justify="space-between" align="center" gap={8}>
+			<Flex align="stretch" direction="column" gap={24}>
+				<Flex align="center" gap={8} justify="space-between">
 					<PageTitle title="Write new blog" />
 				</Flex>
 				<FormProvider {...methods}>

@@ -14,30 +14,30 @@ import {
 import { ModalConfirm, Select, TextInput } from '@/components'
 
 interface FormFilterProps {
+	onSubmit: (data) => void
 	selectedRecords: any[]
 	setSelectedRecords: Dispatch<SetStateAction<any[]>>
-	onSubmit: (data) => void
 }
 
 const FormFilter = ({
+	onSubmit,
 	selectedRecords,
 	setSelectedRecords,
-	onSubmit,
 }: FormFilterProps) => {
 	const [opened, { toggle }] = useDisclosure(false)
-	const [modalOpened, { open: openModal, close: closeModal }] =
+	const [modalOpened, { close: closeModal, open: openModal }] =
 		useDisclosure(false)
 	const { control, handleSubmit } = useForm()
 
 	return (
 		<>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<Flex justify="space-between" align="center" gap={8}>
+				<Flex align="center" gap={8} justify="space-between">
 					<Button
 						color="gray"
-						variant="outline"
-						size="md"
 						leftIcon={<FunnelSimple size={20} />}
+						size="md"
+						variant="outline"
 						onClick={toggle}
 					>
 						More filters
@@ -47,18 +47,18 @@ const FormFilter = ({
 							<>
 								<Button
 									color="gray"
-									variant="outline"
-									size="md"
 									leftIcon={<X size={20} />}
+									size="md"
+									variant="outline"
 									onClick={() => setSelectedRecords([])}
 								>
 									Cancel
 								</Button>
 								<Button
 									color="gray"
-									variant="filled"
-									size="md"
 									leftIcon={<Trash size={20} />}
+									size="md"
+									variant="filled"
 									onClick={openModal}
 								>
 									Delete selected
@@ -66,12 +66,12 @@ const FormFilter = ({
 							</>
 						)}
 						<TextInput
-							name="q"
 							control={control}
-							size="md"
 							icon={<MagnifyingGlass size={20} />}
-							w={280}
+							name="q"
 							placeholder="Search..."
+							size="md"
+							w={280}
 						/>
 					</Flex>
 				</Flex>
@@ -79,68 +79,68 @@ const FormFilter = ({
 					<Grid>
 						<Grid.Col span={4}>
 							<Select
-								name="author"
 								control={control}
 								data={[]}
-								size="md"
 								label="Author"
+								name="author"
 								placeholder="Select author"
+								size="md"
 							/>
 						</Grid.Col>
 						<Grid.Col span={4}>
 							<Select
-								name="categories"
 								control={control}
 								data={[]}
-								size="md"
 								label="Categories"
+								name="categories"
 								placeholder="Select categories"
+								size="md"
 							/>
 						</Grid.Col>
 						<Grid.Col span={4}>
 							<Select
-								name="readingTime"
 								control={control}
 								data={[]}
-								size="md"
 								label="Reading time"
+								name="readingTime"
 								placeholder="Select reading time"
+								size="md"
 							/>
 						</Grid.Col>
 						<Grid.Col span={4}>
 							<Select
-								name="status"
 								control={control}
 								data={[]}
-								size="md"
 								label="Status"
+								name="status"
 								placeholder="Select status"
+								size="md"
 							/>
 						</Grid.Col>
 						<Grid.Col span={4}>
 							<Select
-								name="sortOrder"
 								control={control}
 								data={[]}
-								size="md"
 								label="Sort by"
+								name="sortOrder"
 								placeholder="Select sort by"
+								size="md"
 							/>
 						</Grid.Col>
 					</Grid>
-					<Flex justify="flex-end" gap={12} sx={{ marginTop: rem(24) }}>
+					<Flex gap={12} justify="flex-end" sx={{ marginTop: rem(24) }}>
 						<Button
 							color="gray"
-							variant="outline"
-							size="md"
 							leftIcon={<Eraser size={20} weight="bold" />}
+							size="md"
+							variant="outline"
 						>
 							Clear all
 						</Button>
 						<Button
 							color="primary"
-							size="md"
 							leftIcon={<Check size={20} weight="bold" />}
+							size="md"
 						>
 							Apply
 						</Button>
@@ -148,11 +148,11 @@ const FormFilter = ({
 				</Collapse>
 			</form>
 			<ModalConfirm
-				opened={modalOpened}
-				onClose={closeModal}
-				title="Delete all blogs selected"
-				message="Are you sure you want to delete those blogs? This action cannot be undone."
 				confirmText="Delete"
+				message="Are you sure you want to delete those blogs? This action cannot be undone."
+				opened={modalOpened}
+				title="Delete all blogs selected"
+				onClose={closeModal}
 			/>
 		</>
 	)

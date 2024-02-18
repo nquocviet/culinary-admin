@@ -20,7 +20,7 @@ const generateColors = (
 }
 
 export const COLORS_THEME: ColorsTheme = {
-	white: ['var(--white)'],
 	black: ['var(--black)'],
+	white: ['var(--white)'],
 	...generateColors(COLOR_KEYS, COLOR_VARIANTS),
 }

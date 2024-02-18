@@ -8,9 +8,9 @@ import { uuid } from '@/utils'
 
 const createNewDirection = () => {
 	const ingredient = {
+		content: '',
 		id: uuid(),
 		title: '',
-		content: '',
 	}
 
 	return ingredient
@@ -18,24 +18,24 @@ const createNewDirection = () => {
 
 const DirectionSection = () => {
 	const { control, setValue } = useFormContext()
-	const { fields, append, remove } = useFieldArray({
+	const { append, fields, remove } = useFieldArray({
 		control,
 		name: 'directions',
 	})
 
 	return (
-		<Flex direction="column" align="stretch" gap={16}>
+		<Flex align="stretch" direction="column" gap={16}>
 			<PageTitle order={2} title="Directions" divider />
 			<Text>
 				Enter directions below or{' '}
 				<Text
-					role="button"
 					component="span"
+					role="button"
 					sx={{
-						display: 'inline-block',
-						cursor: 'pointer',
-						fontWeight: 'var(--fw-medium)' as 'normal',
 						color: 'var(--primary-800)',
+						cursor: 'pointer',
+						display: 'inline-block',
+						fontWeight: 'var(--fw-medium)' as 'normal',
 					}}
 				>
 					Add several at once
@@ -43,11 +43,11 @@ const DirectionSection = () => {
 			</Text>
 			{fields.map((direction: any, index) => (
 				<Flex
-					key={direction.id}
-					direction="column"
 					align="stretch"
-					wrap="nowrap"
+					direction="column"
 					gap={12}
+					key={direction.id}
+					wrap="nowrap"
 				>
 					<Flex
 						align="center"
@@ -62,16 +62,16 @@ const DirectionSection = () => {
 						</ActionIcon>
 					</Flex>
 					<TextInput
-						name={`directions[${index}].title`}
-						size="md"
 						control={control}
 						label="Title"
+						name={`directions[${index}].title`}
 						placeholder="e.g. Make the barbecue sauce"
+						size="md"
 					/>
 					<RichTextEditor
-						name={`directions[${index}].content`}
 						content=""
 						label="Content"
+						name={`directions[${index}].content`}
 						placeholder="e.g. Combine all ingredients in a large bowl…"
 						setValue={setValue}
 					/>
@@ -80,9 +80,9 @@ const DirectionSection = () => {
 			<div>
 				<Button
 					color="gray"
-					variant="outline"
-					size="md"
 					leftIcon={<Plus size={20} />}
+					size="md"
+					variant="outline"
 					onClick={() => append(createNewDirection())}
 				>
 					Add new step

@@ -4,25 +4,25 @@ import Image from 'next/image'
 import LogoImg from '@/public/images/logo.png'
 
 interface LogoProps {
-	width?: number
-	height?: number
 	alt?: string
 	className?: string
+	height?: number
+	width?: number
 }
 
 const Logo = ({
-	width = 140,
-	height = 45,
 	alt = 'Culinary logo',
 	className,
+	height = 45,
+	width = 140,
 }: LogoProps) => {
 	return (
 		<Image
-			src={LogoImg}
-			width={width}
-			height={height}
 			alt={alt}
 			className={className}
+			height={height}
+			src={LogoImg}
+			width={width}
 		/>
 	)
 }

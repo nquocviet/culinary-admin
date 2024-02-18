@@ -9,11 +9,11 @@ import IncreaseChart from '@/public/images/increase-chart.svg'
 import { formatNumber } from '@/utils'
 
 interface AnalysisGroupProps {
+	comparison: 'day' | 'month' | 'year'
+	percent: number
+	status: 'increase' | 'decline'
 	title: string
 	total: number
-	percent: number
-	comparison: 'day' | 'month' | 'year'
-	status: 'increase' | 'decline'
 }
 
 const fontCatamaran = FontCatamaran({
@@ -22,11 +22,11 @@ const fontCatamaran = FontCatamaran({
 })
 
 const AnalysisGroup = ({
+	comparison,
+	percent,
+	status,
 	title,
 	total,
-	percent,
-	comparison,
-	status,
 }: AnalysisGroupProps) => {
 	const isDecline = status === 'decline'
 
@@ -63,26 +63,26 @@ const AnalysisGroup = ({
 					</Text>
 					<Text
 						sx={{
+							color: 'var(--gray-500)',
 							fontSize: 'var(--fs-text-sm)',
 							fontWeight: 'var(--fw-medium)' as 'normal',
-							color: 'var(--gray-500)',
 						}}
 					>
 						<Text
 							component="span"
 							sx={{
-								display: 'inline-flex',
 								alignItems: 'center',
-								gap: rem(4),
 								color: isDecline ? 'var(--red-600)' : 'var(--green-600)',
+								display: 'inline-flex',
+								gap: rem(4),
 								marginRight: rem(8),
 								verticalAlign: 'middle',
 							}}
 						>
 							{isDecline ? (
-								<ArrowDown size={16} color="var(--red-600)" weight="bold" />
+								<ArrowDown color="var(--red-600)" size={16} weight="bold" />
 							) : (
-								<ArrowUp size={16} color="var(--green-600)" weight="bold" />
+								<ArrowUp color="var(--green-600)" size={16} weight="bold" />
 							)}
 							{percent}%
 						</Text>
@@ -91,11 +91,11 @@ const AnalysisGroup = ({
 				</Grid.Col>
 				<Grid.Col span={5}>
 					<Image
-						src={isDecline ? DeclineChart : IncreaseChart}
 						alt=""
-						width={0}
 						height={0}
-						style={{ width: '100%', height: '100%' }}
+						src={isDecline ? DeclineChart : IncreaseChart}
+						style={{ height: '100%', width: '100%' }}
+						width={0}
 					/>
 				</Grid.Col>
 			</Grid>

@@ -9,13 +9,13 @@ interface ModalActionProps extends FlexProps {
 const ModalAction = ({ children, fluid, ...props }: ModalActionProps) => {
 	return (
 		<Flex
-			justify="flex-end"
 			align="center"
 			gap={12}
+			justify="flex-end"
 			sx={{
 				marginBottom: rem(-8),
-				width: '100%',
 				padding: `${rem(16)} ${rem(24)}`,
+				width: '100%',
 				...props.sx,
 				...(fluid && {
 					'& > *': {

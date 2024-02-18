@@ -14,14 +14,14 @@ import { BLOG_COLUMNS } from '@/lib/columns/blog'
 import { AnalysisCharts, FormFilter } from './components'
 
 const data = [...Array(10)].map((_, id) => ({
-	id,
-	title: 'Healthy spaghetti bolognese with mushroom',
 	author: {
-		username: 'consectetur.elit',
 		email: 'email@example.com',
+		username: 'consectetur.elit',
 	},
 	categories: [...Array(4)].map(() => 'Healthy food'),
+	id,
 	status: BLOG_STATUS.PUBLISHED,
+	title: 'Healthy spaghetti bolognese with mushroom',
 	updatedAt: new Date(),
 }))
 
@@ -31,15 +31,15 @@ const ManageBlogsPage = () => {
 	const onSubmit = useCallback((data) => console.log(data), [])
 
 	return (
-		<Flex direction="column" align="stretch" gap={24}>
-			<Flex justify="space-between" align="center" gap={8}>
+		<Flex align="stretch" direction="column" gap={24}>
+			<Flex align="center" gap={8} justify="space-between">
 				<PageTitle title="Manage blogs" />
 				<Button
+					color="primary"
 					component={Link}
 					href={ROUTES.BLOGS.NEW}
-					color="primary"
-					size="md"
 					leftIcon={<Plus size={20} weight="bold" />}
+					size="md"
 				>
 					Add new blog
 				</Button>
@@ -51,16 +51,16 @@ const ManageBlogsPage = () => {
 				onSubmit={onSubmit}
 			/>
 			<Table
-				records={data}
 				columns={BLOG_COLUMNS}
 				fetching={false}
 				minWidth={950}
-				totalRecords={data?.length}
-				recordsPerPage={PAGE_SIZE}
 				page={1}
 				paginationSize="md"
-				onPageChange={() => null}
+				records={data}
+				recordsPerPage={PAGE_SIZE}
 				selectedRecords={selectedRecords}
+				totalRecords={data?.length}
+				onPageChange={() => null}
 				onSelectedRecordsChange={setSelectedRecords}
 			/>
 		</Flex>

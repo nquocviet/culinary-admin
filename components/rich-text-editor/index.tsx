@@ -29,11 +29,11 @@ import StarterKit from '@tiptap/starter-kit'
 import { Label } from '@/components'
 
 interface RichTextEditorProps<T extends FieldValues> {
-	name: Path<T>
-	label?: string
-	placeholder?: string
-	minHeight?: number
 	content: Content
+	label?: string
+	minHeight?: number
+	name: Path<T>
+	placeholder?: string
 	setValue: SetFieldValue<T>
 }
 
@@ -54,14 +54,15 @@ const IconLinkBreak = () => <LinkBreak size={20} />
 const IconImage = () => <ImageSquare size={20} weight="fill" />
 
 const RichTextEditor = <T extends FieldValues>({
-	name,
-	label,
-	placeholder = '',
-	minHeight = 120,
 	content,
+	label,
+	minHeight = 120,
+	name,
+	placeholder = '',
 	setValue,
 }: RichTextEditorProps<T>) => {
 	const editor = useEditor({
+		content,
 		extensions: [
 			StarterKit,
 			Underline,
@@ -74,7 +75,6 @@ const RichTextEditor = <T extends FieldValues>({
 			const content = props.editor.getHTML()
 			setValue(name, content)
 		},
-		content,
 	})
 
 	return (
@@ -89,7 +89,7 @@ const RichTextEditor = <T extends FieldValues>({
 					},
 				}}
 			>
-				<MantineRichTextEditor.Toolbar sticky stickyOffset={60}>
+				<MantineRichTextEditor.Toolbar stickyOffset={60} sticky>
 					<MantineRichTextEditor.ControlsGroup>
 						<MantineRichTextEditor.H2 icon={IconTextH} />
 						<MantineRichTextEditor.Bold icon={IconTextBolder} />

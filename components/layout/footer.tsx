@@ -15,19 +15,19 @@ interface FooterProps {
 const Footer = ({ opened }: FooterProps) => {
 	return (
 		<MantineFooter
-			height={FOOTER_HEIGHT}
 			fixed={false}
+			height={FOOTER_HEIGHT}
+			ml={{ xs: opened ? ASIDE_WIDTH_DEFAULT : ASIDE_WIDTH_COLLAPSE }}
 			sx={{
 				position: 'static',
 			}}
-			ml={{ xs: opened ? ASIDE_WIDTH_DEFAULT : ASIDE_WIDTH_COLLAPSE }}
 		>
 			<Flex
-				justify="center"
 				align="center"
+				justify="center"
 				sx={{
-					height: '100%',
 					color: 'var(--gray-500)',
+					height: '100%',
 				}}
 			>
 				<Text align="center">

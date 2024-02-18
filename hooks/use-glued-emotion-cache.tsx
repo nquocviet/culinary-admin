@@ -20,8 +20,8 @@ const useGluedEmotionCache = (key = 'emotion') => {
 		const emotionKey = `${key} ${names}`
 		return (
 			<style
-				data-emotion={emotionKey}
 				dangerouslySetInnerHTML={{ __html: styles }}
+				data-emotion={emotionKey}
 			/>
 		)
 	})

@@ -11,8 +11,8 @@ const MAX_NUTRITIONAL_ITEMS = 6
 const createNewNutritional = () => {
 	const nutritional = {
 		id: uuid(),
-		value: '',
 		unit: '',
+		value: '',
 	}
 
 	return nutritional
@@ -21,13 +21,13 @@ const createNewNutritional = () => {
 const OtherSection = () => {
 	const [showNote, setShowNote] = useState(false)
 	const { control } = useFormContext()
-	const { fields, append, remove, replace } = useFieldArray({
+	const { append, fields, remove, replace } = useFieldArray({
 		control,
 		name: 'nutritionals',
 	})
 
 	return (
-		<Flex direction="column" align="stretch" gap={16}>
+		<Flex align="stretch" direction="column" gap={16}>
 			<PageTitle order={2} title="Others" divider />
 			{Boolean(fields.length) && (
 				<>
@@ -37,48 +37,48 @@ const OtherSection = () => {
 							<Grid.Col key={nutritional.id} span={4}>
 								<Flex sx={{ position: 'relative' }}>
 									<TextInput
-										name={`nutritionals[${index}].value`}
 										control={control}
+										name={`nutritionals[${index}].value`}
 										placeholder="e.g. 200g"
 										size="md"
-										sx={{
-											flex: 1,
-										}}
 										styles={{
 											input: {
+												borderBottomRightRadius: 0,
 												borderRight: 'none',
 												borderTopRightRadius: 0,
-												borderBottomRightRadius: 0,
 											},
+										}}
+										sx={{
+											flex: 1,
 										}}
 									/>
 									<Divider orientation="vertical" />
 									<TextInput
-										name={`nutritionals[${index}].unit`}
 										control={control}
+										name={`nutritionals[${index}].unit`}
 										placeholder="e.g. calories"
 										size="md"
-										sx={{ flex: 1 }}
 										styles={{
 											input: {
+												borderBottomLeftRadius: 0,
 												borderLeft: 'none',
 												borderTopLeftRadius: 0,
-												borderBottomLeftRadius: 0,
 											},
 										}}
+										sx={{ flex: 1 }}
 									/>
 									<ActionIcon
-										variant="transparent"
 										sx={{
+											'&:active': {
+												transform: 'translate(50%, -50%)',
+											},
 											backgroundColor: 'var(--white)',
 											position: 'absolute',
 											right: 0,
 											top: 0,
 											transform: 'translate(50%, -50%)',
-											'&:active': {
-												transform: 'translate(50%, -50%)',
-											},
 										}}
+										variant="transparent"
 										onClick={() => remove(index)}
 									>
 										<MinusCircle size={20} />
@@ -92,15 +92,15 @@ const OtherSection = () => {
 							<Flex gap={16}>
 								<Button
 									color="gray"
-									variant="outline"
+									disabled={fields.length === MAX_NUTRITIONAL_ITEMS}
 									size="md"
 									sx={{ flex: 1 }}
+									variant="outline"
 									onClick={() => {
 										if (fields.length < MAX_NUTRITIONAL_ITEMS) {
 											append(createNewNutritional())
 										}
 									}}
-									disabled={fields.length === MAX_NUTRITIONAL_ITEMS}
 								>
 									Add new
 								</Button>
@@ -119,24 +119,24 @@ const OtherSection = () => {
 			)}
 			{showNote && (
 				<Textarea
-					name="note"
 					control={control}
 					label="Note"
+					minRows={4}
+					name="note"
 					placeholder="Note something..."
 					rightSection={
 						<ActionIcon
 							sx={{
-								position: 'absolute',
 								bottom: '100%',
 								marginBottom: rem(4),
 								marginRight: rem(-8),
+								position: 'absolute',
 							}}
 							onClick={() => setShowNote(false)}
 						>
 							<MinusCircle size={20} />
 						</ActionIcon>
 					}
-					minRows={4}
 					sx={{ position: 'relative' }}
 				/>
 			)}
@@ -144,9 +144,9 @@ const OtherSection = () => {
 				{!fields.length && (
 					<Button
 						color="gray"
-						variant="outline"
-						size="md"
 						leftIcon={<Plus size={20} />}
+						size="md"
+						variant="outline"
 						onClick={() =>
 							replace([
 								createNewNutritional(),
@@ -161,9 +161,9 @@ const OtherSection = () => {
 				{!showNote && (
 					<Button
 						color="gray"
-						variant="outline"
-						size="md"
 						leftIcon={<Plus size={20} />}
+						size="md"
+						variant="outline"
 						onClick={() => setShowNote(true)}
 					>
 						Add note

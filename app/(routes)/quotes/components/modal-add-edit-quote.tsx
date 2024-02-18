@@ -15,10 +15,10 @@ interface ModalAddEditQuoteProps extends ModalOpenedProps {
 }
 
 const defaultValues = {
-	quote: '',
 	author: '',
 	position: '',
 	published: true,
+	quote: '',
 }
 
 const ModalAddEditQuote = ({ quote, ...props }: ModalAddEditQuoteProps) => {
@@ -39,34 +39,34 @@ const ModalAddEditQuote = ({ quote, ...props }: ModalAddEditQuoteProps) => {
 
 	return (
 		<Modal
-			title="Add new quote"
 			confirmText="Save"
 			rightActionSection={
-				<Switch name="published" control={control} label="Publish" />
+				<Switch control={control} label="Publish" name="published" />
 			}
+			title="Add new quote"
 			onConfirm={handleSubmit(onSubmit)}
 			{...props}
 		>
-			<Flex direction="column" align="stretch" gap={16}>
+			<Flex align="stretch" direction="column" gap={16}>
 				<Textarea
-					name="quote"
 					control={control}
 					label="Quote"
-					placeholder="Enter quote..."
 					minRows={4}
+					name="quote"
+					placeholder="Enter quote..."
 					required
 				/>
 				<TextInput
-					name="author"
 					control={control}
 					label="Author"
+					name="author"
 					placeholder="Enter author..."
 					required
 				/>
 				<TextInput
-					name="position"
 					control={control}
 					label="Position"
+					name="position"
 					placeholder="Enter position..."
 					required
 				/>

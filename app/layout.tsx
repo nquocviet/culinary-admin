@@ -10,8 +10,8 @@ import '@/styles/globals.css'
 
 const fontMerriweather = FontMerriweather({
 	subsets: ['latin'],
-	weight: ['300', '400', '700', '900'],
 	variable: '--ff-merriweather',
+	weight: ['300', '400', '700', '900'],
 })
 
 const fontInter = FontInter({
@@ -24,12 +24,6 @@ interface RootLayoutProps {
 }
 
 export const metadata = {
-	title: {
-		default: siteConfig.name,
-		template: `%s | ${siteConfig.name}`,
-	},
-	description: siteConfig.description,
-	keywords: ['Next.js', 'React', 'Tailwind CSS', 'Server Components'],
 	authors: [
 		{
 			name: '',
@@ -37,31 +31,37 @@ export const metadata = {
 		},
 	],
 	creator: '',
-	themeColor: [
-		{ media: '(prefers-color-scheme: light)', color: 'white' },
-		{ media: '(prefers-color-scheme: dark)', color: 'black' },
-	],
+	description: siteConfig.description,
+	icons: {
+		apple: '/apple-touch-icon.png',
+		icon: '/favicon.ico',
+		shortcut: '/favicon-16x16.png',
+	},
+	keywords: ['Next.js', 'React', 'Tailwind CSS', 'Server Components'],
+	manifest: `${siteConfig.url}/site.webmanifest`,
 	openGraph: {
-		type: 'website',
-		locale: 'en_US',
-		url: siteConfig.url,
-		title: siteConfig.name,
 		description: siteConfig.description,
+		locale: 'en_US',
 		siteName: siteConfig.name,
+		title: siteConfig.name,
+		type: 'website',
+		url: siteConfig.url,
+	},
+	themeColor: [
+		{ color: 'white', media: '(prefers-color-scheme: light)' },
+		{ color: 'black', media: '(prefers-color-scheme: dark)' },
+	],
+	title: {
+		default: siteConfig.name,
+		template: `%s | ${siteConfig.name}`,
 	},
 	twitter: {
 		card: 'summary_large_image',
-		title: siteConfig.name,
+		creator: '',
 		description: siteConfig.description,
 		images: [`${siteConfig.url}/og.jpg`],
-		creator: '',
+		title: siteConfig.name,
 	},
-	icons: {
-		icon: '/favicon.ico',
-		shortcut: '/favicon-16x16.png',
-		apple: '/apple-touch-icon.png',
-	},
-	manifest: `${siteConfig.url}/site.webmanifest`,
 }
 
 const RootLayout = ({ children }: RootLayoutProps) => {

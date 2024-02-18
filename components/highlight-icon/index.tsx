@@ -13,47 +13,47 @@ type HighlightIconColors =
 type HighlightIconSizes = 'sm' | 'md' | 'lg'
 
 interface HighlightIconProps extends React.HTMLAttributes<HTMLSpanElement> {
-	color?: HighlightIconColors
-	size?: HighlightIconSizes
-	icon: Icon
 	className?: string
+	color?: HighlightIconColors
+	icon: Icon
+	size?: HighlightIconSizes
 }
 
 const iconSizes = {
-	sm: 16,
-	md: 20,
 	lg: 24,
+	md: 20,
+	sm: 16,
 }
 
 const useStyles = createStyles(
 	(_, { color }: Pick<HighlightIconProps, 'color'>) => ({
 		base: {
-			display: 'inline-flex',
-			justifyContent: 'center',
 			alignItems: 'center',
-			borderRadius: '50%',
-			borderStyle: 'solid',
-			padding: rem(4),
-			color: `var(--${color}-600)`,
 			backgroundColor: `var(--${color}-100)`,
 			borderColor: `var(--${color}-50)`,
+			borderRadius: '50%',
+			borderStyle: 'solid',
+			color: `var(--${color}-600)`,
+			display: 'inline-flex',
+			justifyContent: 'center',
+			padding: rem(4),
 		},
-		sm: {
-			borderWidth: rem(4),
+		lg: {
+			borderWidth: rem(8),
 		},
 		md: {
 			borderWidth: rem(6),
 		},
-		lg: {
-			borderWidth: rem(8),
+		sm: {
+			borderWidth: rem(4),
 		},
 	})
 )
 
 const HighlightIcon = ({
 	color = 'primary',
-	size = 'sm',
 	icon,
+	size = 'sm',
 	...rest
 }: HighlightIconProps) => {
 	const { classes } = useStyles({ color })

@@ -25,22 +25,22 @@ const NewRecipePage = () => {
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
-			<Flex direction="column" align="stretch" gap={24}>
-				<Flex justify="space-between" align="center" gap={8}>
+			<Flex align="stretch" direction="column" gap={24}>
+				<Flex align="center" gap={8} justify="space-between">
 					<PageTitle title="Add new recipe" />
 					<Flex gap={12}>
 						<Button
 							color="gray"
-							variant="outline"
-							size="md"
 							leftIcon={<DownloadSimple size={20} weight="bold" />}
+							size="md"
+							variant="outline"
 						>
 							Download sample
 						</Button>
 						<Button
 							color="primary"
-							size="md"
 							leftIcon={<UploadSimple size={20} weight="bold" />}
+							size="md"
 						>
 							Import recipe
 						</Button>

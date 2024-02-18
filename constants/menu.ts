@@ -15,11 +15,11 @@ import {
 import { ROUTES } from '@/config/routes'
 
 export type MenuItemType = {
-	label: string
-	href?: string
-	icon?: Icon
 	children?: MenuItemType[]
 	highlight?: boolean
+	href?: string
+	icon?: Icon
+	label: string
 	opened?: boolean
 }
 
@@ -28,104 +28,104 @@ export type MenuListType = Array<MenuItemType[]>
 export const MENU_LIST: MenuListType = [
 	[
 		{
-			label: 'Dashboard',
 			href: ROUTES.HOME,
 			icon: PresentationChart,
+			label: 'Dashboard',
 		},
 		{
-			label: 'Recipes',
-			icon: Book,
 			children: [
 				{
-					label: 'Manage recipes',
 					href: ROUTES.RECIPES.LIST,
+					label: 'Manage recipes',
 				},
 				{
-					label: 'Create new',
 					href: ROUTES.RECIPES.NEW,
+					label: 'Create new',
 				},
 			],
+			icon: Book,
+			label: 'Recipes',
 		},
 		{
-			label: 'Blogs',
-			icon: Notepad,
 			children: [
 				{
-					label: 'Manage blogs',
 					href: ROUTES.BLOGS.LIST,
+					label: 'Manage blogs',
 				},
 				{
-					label: 'Create new',
 					href: ROUTES.BLOGS.NEW,
+					label: 'Create new',
 				},
 			],
+			icon: Notepad,
+			label: 'Blogs',
 		},
 		{
-			label: 'Users',
-			icon: Users,
 			children: [
 				{
-					label: 'Manage users',
 					href: ROUTES.USERS.LIST,
+					label: 'Manage users',
 				},
 				{
-					label: 'Create new',
 					href: ROUTES.USERS.NEW,
+					label: 'Create new',
 				},
 				{
-					label: 'Blacklist',
 					href: ROUTES.USERS.BLACKLIST,
+					label: 'Blacklist',
 				},
 			],
+			icon: Users,
+			label: 'Users',
 		},
 		{
-			label: 'Feedbacks',
 			href: ROUTES.FEEDBACKS,
 			icon: ChatDots,
+			label: 'Feedbacks',
 		},
 		{
-			label: 'Reports',
 			href: ROUTES.REPORTS,
 			icon: Flag,
+			label: 'Reports',
 		},
 		{
-			label: 'Others',
-			icon: DotsThreeCircle,
 			children: [
 				{
-					label: 'Quotes',
 					href: ROUTES.QUOTES,
+					label: 'Quotes',
 				},
 				{
-					label: 'Cuisines',
 					href: ROUTES.CUISINES,
+					label: 'Cuisines',
 				},
 				{
-					label: 'Dishes',
 					href: ROUTES.DISHES,
+					label: 'Dishes',
 				},
 				{
-					label: 'Categories',
 					href: ROUTES.CATEGORIES,
+					label: 'Categories',
 				},
 			],
+			icon: DotsThreeCircle,
+			label: 'Others',
 		},
 	],
 	[
 		{
-			label: 'Guideline',
 			href: ROUTES.HELP_CENTER,
 			icon: Notebook,
+			label: 'Guideline',
 		},
 		{
-			label: 'Help center',
 			href: ROUTES.HELP_CENTER,
 			icon: Question,
+			label: 'Help center',
 		},
 		{
-			label: 'Settings',
 			href: ROUTES.SETTINGS,
 			icon: GearSix,
+			label: 'Settings',
 		},
 	],
 ]

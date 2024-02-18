@@ -15,144 +15,144 @@ const IntroSection = () => {
 	const { control } = useFormContext()
 
 	return (
-		<Flex direction="column" align="stretch" gap={16}>
+		<Flex align="stretch" direction="column" gap={16}>
 			<PageTitle order={2} title="Intro" divider />
 			<TextInput
-				name="title"
 				control={control}
-				size="md"
 				label="Title"
+				name="title"
 				placeholder="New recipe title here"
+				size="md"
 				required
 			/>
 			<Textarea
-				name="description"
 				control={control}
-				size="md"
 				label="Description"
-				placeholder="Enter a description"
 				minRows={5}
+				name="description"
+				placeholder="Enter a description"
+				size="md"
 			/>
 			<div>
 				<Button
-					component="label"
 					color="gray"
+					component="label"
+					leftIcon={<ImageSquare size={20} weight="fill" />}
 					size="md"
 					variant="outline"
-					leftIcon={<ImageSquare size={20} weight="fill" />}
 				>
 					Add a cover image
-					<input type="file" style={{ display: 'none' }} />
+					<input style={{ display: 'none' }} type="file" />
 				</Button>
 			</div>
 			<Grid>
 				<Grid.Col span={6}>
 					<Flex
 						align="flex-end"
+						gap={16}
 						sx={{
 							'& > *': { flex: 1 },
 						}}
-						gap={16}
 					>
 						<NumberInput
-							name="prepareHour"
 							control={control}
-							size="md"
 							label="Prepare time"
-							rightText="hours"
-							min={0}
 							max={168}
+							min={0}
+							name="prepareHour"
+							rightText="hours"
+							size="md"
 							required
 						/>
 						<NumberInput
-							name="prepareMinute"
 							control={control}
-							size="md"
-							rightText="minutes"
-							min={0}
 							max={59}
+							min={0}
+							name="prepareMinute"
+							rightText="minutes"
+							size="md"
 						/>
 					</Flex>
 				</Grid.Col>
 				<Grid.Col span={6}>
 					<Flex
 						align="flex-end"
+						gap={16}
 						sx={{
 							'& > *': { flex: 1 },
 						}}
-						gap={16}
 					>
 						<NumberInput
-							name="cookingHour"
 							control={control}
-							size="md"
 							label="Cooking time"
-							rightText="hours"
-							min={0}
 							max={168}
+							min={0}
+							name="cookingHour"
+							rightText="hours"
+							size="md"
 							required
 						/>
 						<NumberInput
-							name="cookingMinute"
 							control={control}
-							size="md"
-							rightText="minutes"
-							min={0}
 							max={59}
+							min={0}
+							name="cookingMinute"
+							rightText="minutes"
+							size="md"
 						/>
 					</Flex>
 				</Grid.Col>
 				<Grid.Col span={6}>
 					<Select
-						name="difficulty"
 						control={control}
 						data={[]}
-						size="md"
 						label="Difficulty"
+						name="difficulty"
 						placeholder="Choose a difficulty"
+						size="md"
 						required
 					/>
 				</Grid.Col>
 				<Grid.Col span={6}>
 					<NumberInput
-						name="serves"
 						control={control}
-						size="md"
 						label="Serves"
-						rightText="people"
-						min={1}
 						max={100}
+						min={1}
+						name="serves"
+						rightText="people"
+						size="md"
 						required
 					/>
 				</Grid.Col>
 				<Grid.Col span={6}>
 					<Select
-						name="cuisine"
 						control={control}
 						data={[]}
-						size="md"
 						label="Cuisine"
+						name="cuisine"
 						placeholder="Choose a cuisine"
+						size="md"
 					/>
 				</Grid.Col>
 				<Grid.Col span={6}>
 					<Select
-						name="dishes"
 						control={control}
 						data={[]}
-						size="md"
 						label="Categories"
+						name="dishes"
 						placeholder="Choose categories"
+						size="md"
 					/>
 				</Grid.Col>
 			</Grid>
 			<Select
-				name="series"
 				control={control}
 				data={[]}
-				size="md"
 				label="Series"
+				name="series"
 				placeholder="Add to your series"
+				size="md"
 			/>
 		</Flex>
 	)

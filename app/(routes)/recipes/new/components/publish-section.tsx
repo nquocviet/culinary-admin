@@ -9,37 +9,37 @@ const PublishSection = () => {
 	const { control } = useFormContext()
 
 	return (
-		<Flex direction="column" align="stretch" gap={16}>
+		<Flex align="stretch" direction="column" gap={16}>
 			<PageTitle order={2} title="Publish" divider />
-			<Flex justify="space-between" align="center" gap={8}>
+			<Flex align="center" gap={8} justify="space-between">
 				<Switch
-					name="published"
 					control={control}
-					label="Publish recipe"
 					description="Anyone who sees my profile can see this recipe."
+					label="Publish recipe"
+					name="published"
 					size="md"
 				/>
 				<Flex gap={12}>
 					<Button
 						color="gray"
-						variant="outline"
-						size="md"
 						leftIcon={<Prohibit size={20} weight="bold" />}
+						size="md"
+						variant="outline"
 					>
 						Cancel
 					</Button>
 					<Button
 						color="gray"
-						variant="filled"
-						size="md"
 						leftIcon={<Eye size={20} weight="bold" />}
+						size="md"
+						variant="filled"
 					>
 						Preview
 					</Button>
 					<Button
 						color="primary"
-						size="md"
 						leftIcon={<FloppyDisk size={20} weight="bold" />}
+						size="md"
 					>
 						Save recipe
 					</Button>

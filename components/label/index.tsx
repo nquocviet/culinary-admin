@@ -10,13 +10,13 @@ const Label = ({ text, ...props }: LabelProps) => {
 		<Text
 			component="label"
 			sx={{
-				display: 'inline-block',
-				fontWeight: 'var(--fw-medium)' as 'normal',
 				color: 'var(--gray-900)',
-				wordBreak: 'break-word',
 				cursor: 'default',
+				display: 'inline-block',
 				fontSize: 'var(--fs-text-sm)',
+				fontWeight: 'var(--fw-medium)' as 'normal',
 				marginBottom: rem(6),
+				wordBreak: 'break-word',
 			}}
 			{...props}
 		>

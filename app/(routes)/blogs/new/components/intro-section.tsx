@@ -15,51 +15,51 @@ const IntroSection = () => {
 	const { control, setValue } = useFormContext()
 
 	return (
-		<Flex direction="column" align="stretch" gap={16}>
+		<Flex align="stretch" direction="column" gap={16}>
 			<PageTitle order={2} title="Intro" divider />
 			<TextInput
-				name="title"
 				control={control}
-				size="md"
 				label="Title"
+				name="title"
 				placeholder="New blog title here"
+				size="md"
 				required
 			/>
 			<Textarea
-				name="description"
 				control={control}
-				size="md"
 				label="Description"
-				placeholder="Enter a description"
 				minRows={5}
+				name="description"
+				placeholder="Enter a description"
+				size="md"
 			/>
 			<div>
 				<Button
-					component="label"
 					color="gray"
+					component="label"
+					leftIcon={<ImageSquare size={20} weight="fill" />}
 					size="md"
 					variant="outline"
-					leftIcon={<ImageSquare size={20} weight="fill" />}
 				>
 					Add a cover image
-					<input type="file" style={{ display: 'none' }} />
+					<input style={{ display: 'none' }} type="file" />
 				</Button>
 			</div>
 			<Select
-				name="topic"
 				control={control}
 				data={[]}
-				size="md"
 				label="Topics"
+				name="topic"
 				placeholder="Choose topics"
+				size="md"
 			/>
 			<RichTextEditor
-				name="content"
 				content=""
 				label="Content"
+				minHeight={280}
+				name="content"
 				placeholder="Write your blog content here"
 				setValue={setValue}
-				minHeight={280}
 			/>
 		</Flex>
 	)

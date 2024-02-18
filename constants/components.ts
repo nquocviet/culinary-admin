@@ -5,24 +5,24 @@ export const components: any = {
 	Badge: {
 		styles: () => ({
 			root: {
-				textTransform: 'capitalize',
 				fontWeight: 'var(--fw-medium)',
+				textTransform: 'capitalize',
 			},
 		}),
 	},
 	Button: {
 		styles: (theme, params: ButtonStylesParams, { variant }) => ({
-			root: {
+			leftIcon: {
 				color:
 					params.color === 'primary' && variant === 'filled'
 						? theme.colors.black
 						: undefined,
+			},
+			root: {
 				borderColor:
 					params.color === 'gray' && variant === 'outline'
 						? theme.colors.gray[3]
 						: undefined,
-			},
-			leftIcon: {
 				color:
 					params.color === 'primary' && variant === 'filled'
 						? theme.colors.black
@@ -42,20 +42,30 @@ export const components: any = {
 			},
 		}),
 	},
+	NavLink: {
+		styles: () => ({
+			root: {
+				'&[data-active]': {
+					backgroundColor: 'var(--gray-100)',
+					color: 'var(--gray-900)',
+				},
+			},
+		}),
+	},
 	NumberInput: {
 		styles: (theme) => ({
-			label: {
-				fontSize: 'var(--fs-text-sm)',
-				marginBottom: '0.375rem',
-			},
 			input: {
-				borderColor: theme.colors.gray[3],
-				'&:focus': {
-					borderColor: `${theme.colors.gray[5]} !important`,
-				},
 				'&::placeholder': {
 					color: theme.colors.gray[4],
 				},
+				'&:focus': {
+					borderColor: `${theme.colors.gray[5]} !important`,
+				},
+				borderColor: theme.colors.gray[3],
+			},
+			label: {
+				fontSize: 'var(--fs-text-sm)',
+				marginBottom: '0.375rem',
 			},
 		}),
 	},
@@ -68,143 +78,133 @@ export const components: any = {
 			},
 		}),
 	},
-	NavLink: {
-		styles: () => ({
-			root: {
-				'&[data-active]': {
-					backgroundColor: 'var(--gray-100)',
-					color: 'var(--gray-900)',
-				},
-			},
-		}),
-	},
 	RichTextEditor: {
 		styles: (theme) => ({
-			root: {
-				borderColor: theme.colors.gray[3],
-				'&:focus-within': {
-					borderColor: `${theme.colors.gray[5]} !important`,
-				},
-			},
-			toolbar: {
-				borderColor: theme.colors.gray[3],
-				padding: `${rem(8)} ${rem(14)}`,
-			},
 			content: {
-				'&:has(.is-editor-empty)': {
-					height: '1px',
+				'& .is-editor-empty::before': {
+					color: `${theme.colors.gray[4]} !important`,
 				},
 				'& > div': {
 					height: '100% !important',
 					paddingLeft: `${rem(14)} !important`,
 					paddingRight: `${rem(14)} !important`,
 				},
-				'& .is-editor-empty::before': {
-					color: `${theme.colors.gray[4]} !important`,
-				},
 				'& a': {
 					color: theme.colors.blue[5],
 				},
-			},
-			controlsGroup: {
-				gap: rem(6),
+				'&:has(.is-editor-empty)': {
+					height: '1px',
+				},
 			},
 			control: {
-				borderColor: 'transparent',
-				height: 'auto',
-				borderRadius: `${rem(4)} !important`,
-				padding: rem(4),
 				'&:hover': {
 					backgroundColor: `${theme.colors.gray[0]} !important`,
 				},
 				'&[data-active]': {
-					backgroundColor: theme.colors.primary[3],
-					color: theme.colors.primary[8],
 					'&:hover': {
 						backgroundColor: `${theme.colors.primary[4]} !important`,
 					},
+					backgroundColor: theme.colors.primary[3],
+					color: theme.colors.primary[8],
 				},
+				borderColor: 'transparent',
+				borderRadius: `${rem(4)} !important`,
+				height: 'auto',
+				padding: rem(4),
+			},
+			controlsGroup: {
+				gap: rem(6),
 			},
 			linkEditorExternalControl: {
 				'&[data-active]': {
-					backgroundColor: theme.colors.primary[3],
-					color: theme.colors.primary[8],
-					borderColor: theme.colors.primary[6],
 					'&:hover': {
 						backgroundColor: `${theme.colors.primary[4]} !important`,
 					},
+					backgroundColor: theme.colors.primary[3],
+					borderColor: theme.colors.primary[6],
+					color: theme.colors.primary[8],
 				},
+			},
+			root: {
+				'&:focus-within': {
+					borderColor: `${theme.colors.gray[5]} !important`,
+				},
+				borderColor: theme.colors.gray[3],
+			},
+			toolbar: {
+				borderColor: theme.colors.gray[3],
+				padding: `${rem(8)} ${rem(14)}`,
 			},
 		}),
 	},
 	Select: {
 		styles: (theme) => ({
-			label: {
-				fontSize: 'var(--fs-text-sm)',
-				marginBottom: '0.375rem',
-			},
 			input: {
-				borderColor: theme.colors.gray[3],
-				'&[readonly]:focus': {
-					borderColor: `${theme.colors.gray[3]} !important`,
-				},
 				'&:focus': {
 					borderColor: `${theme.colors.gray[5]} !important`,
 				},
+				'&[readonly]:focus': {
+					borderColor: `${theme.colors.gray[3]} !important`,
+				},
+				borderColor: theme.colors.gray[3],
+			},
+			label: {
+				fontSize: 'var(--fs-text-sm)',
+				marginBottom: '0.375rem',
 			},
 		}),
 	},
 	Switch: {
 		styles: (theme) => ({
+			label: {
+				cursor: 'pointer',
+			},
 			thumb: {
 				borderColor: theme.colors.white,
 			},
 			track: {
-				cursor: 'pointer',
 				borderColor: theme.colors.gray[2],
-			},
-			label: {
 				cursor: 'pointer',
-			},
-		}),
-	},
-	Textarea: {
-		styles: (theme) => ({
-			label: {
-				fontSize: 'var(--fs-text-sm)',
-				marginBottom: '0.375rem',
-			},
-			input: {
-				borderColor: theme.colors.gray[3],
-				'&[readonly]:focus': {
-					borderColor: `${theme.colors.gray[3]} !important`,
-				},
-				'&:focus': {
-					borderColor: `${theme.colors.gray[5]} !important`,
-				},
-				'&::placeholder': {
-					color: theme.colors.gray[4],
-				},
 			},
 		}),
 	},
 	TextInput: {
 		styles: (theme) => ({
-			label: {
-				fontSize: 'var(--fs-text-sm)',
-				marginBottom: '0.375rem',
-			},
 			input: {
-				borderColor: theme.colors.gray[3],
-				'&[readonly]:focus': {
-					borderColor: `${theme.colors.gray[3]} !important`,
+				'&::placeholder': {
+					color: theme.colors.gray[4],
 				},
 				'&:focus': {
 					borderColor: `${theme.colors.gray[5]} !important`,
 				},
+				'&[readonly]:focus': {
+					borderColor: `${theme.colors.gray[3]} !important`,
+				},
+				borderColor: theme.colors.gray[3],
+			},
+			label: {
+				fontSize: 'var(--fs-text-sm)',
+				marginBottom: '0.375rem',
+			},
+		}),
+	},
+	Textarea: {
+		styles: (theme) => ({
+			input: {
 				'&::placeholder': {
 					color: theme.colors.gray[4],
 				},
+				'&:focus': {
+					borderColor: `${theme.colors.gray[5]} !important`,
+				},
+				'&[readonly]:focus': {
+					borderColor: `${theme.colors.gray[3]} !important`,
+				},
+				borderColor: theme.colors.gray[3],
+			},
+			label: {
+				fontSize: 'var(--fs-text-sm)',
+				marginBottom: '0.375rem',
 			},
 		}),
 	},
