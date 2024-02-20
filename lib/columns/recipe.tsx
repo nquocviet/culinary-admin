@@ -4,7 +4,7 @@ import { PencilSimple, Trash } from '@phosphor-icons/react'
 
 import { AvatarGroup, Chip, ModalConfirm } from '@/components'
 import { MAX_TAGS_DISPLAY } from '@/constants/common'
-import { RECIPE_STATUS } from '@/constants/recipe'
+import { RecipeStatus } from '@/constants/recipe'
 import { MantineDataTableColumn } from '@/types'
 import { formatDate } from '@/utils'
 
@@ -82,9 +82,9 @@ export const RECIPE_COLUMNS: MantineDataTableColumn<any> = [
 		accessor: 'status',
 		render: ({ status }) => {
 			switch (status) {
-				case RECIPE_STATUS.DRAFT:
+				case RecipeStatus.DRAFT:
 					return <Badge color="gray">Draft</Badge>
-				case RECIPE_STATUS.PUBLISHED:
+				case RecipeStatus.PUBLISHED:
 					return <Badge color="green">Published</Badge>
 				default:
 					return '-'

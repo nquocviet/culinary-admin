@@ -7,7 +7,7 @@ import { Plus } from '@phosphor-icons/react'
 
 import { PageTitle, Table } from '@/components'
 import { PAGE_SIZE } from '@/constants/common'
-import { QUOTE_STATUS } from '@/constants/quote'
+import { QuoteStatus } from '@/constants/quote'
 import { QUOTE_COLUMNS } from '@/lib/columns/quote'
 
 import { FormFilter, ModalAddEditQuote } from './components'
@@ -18,7 +18,7 @@ const data = [...Array(10)].map((_, id) => ({
 	position: 'Nulla id autem sit',
 	quote:
 		'Reiciendis tempore cumque natus quis quam vel sapiente aut labore maiores cupiditate sequi laborum obcaetia asis',
-	status: QUOTE_STATUS.PUBLISHED,
+	status: QuoteStatus.PUBLISHED,
 	updatedAt: new Date(),
 }))
 

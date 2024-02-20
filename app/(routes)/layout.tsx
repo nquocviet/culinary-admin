@@ -3,6 +3,7 @@
 import React, { ReactNode } from 'react'
 import { AppShell, Container, rem, useMantineTheme } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
+import { AppProgressBar as ProgressBar } from 'next-nprogress-bar'
 
 import { Footer, Navbar } from '@/components'
 import {
@@ -43,6 +44,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
 				},
 			}}
 		>
+			<ProgressBar />
 			<Container
 				py={16}
 				sx={{

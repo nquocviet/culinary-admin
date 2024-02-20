@@ -1,9 +1,9 @@
-export const RECIPE_STATUS = {
-	DRAFT: 'DRAFT',
-	PUBLISHED: 'PUBLISHED',
-} as const
+export enum RecipeStatus {
+	DRAFT = 'DRAFT',
+	PUBLISHED = 'PUBLISHED',
+}
 
-export const INGREDIENT_TYPES = {
-	HEADER: 'HEADER',
-	ITEM: 'ITEM',
-} as const
+export enum IngredientType {
+	HEADER = 'HEADER',
+	ITEM = 'ITEM',
+}

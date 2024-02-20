@@ -144,9 +144,9 @@ const NestedMenu = ({ children, icon: Icon, label, opened }: MenuItemType) => {
 					opened && {
 						rightSection: (
 							<CaretRight
-								size={16}
+								size={18}
 								style={{
-									transform: `rotate(${opened ? -90 : 90})`,
+									transform: `rotate(${inOpened ? -90 : 90}deg)`,
 								}}
 							/>
 						),

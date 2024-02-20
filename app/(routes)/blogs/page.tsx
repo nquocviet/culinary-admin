@@ -7,7 +7,7 @@ import Link from 'next/link'
 
 import { PageTitle, Table } from '@/components'
 import { ROUTES } from '@/config/routes'
-import { BLOG_STATUS } from '@/constants/blog'
+import { BlogStatus } from '@/constants/blog'
 import { PAGE_SIZE } from '@/constants/common'
 import { BLOG_COLUMNS } from '@/lib/columns/blog'
 
@@ -20,7 +20,7 @@ const data = [...Array(10)].map((_, id) => ({
 	},
 	categories: [...Array(4)].map(() => 'Healthy food'),
 	id,
-	status: BLOG_STATUS.PUBLISHED,
+	status: BlogStatus.PUBLISHED,
 	title: 'Healthy spaghetti bolognese with mushroom',
 	updatedAt: new Date(),
 }))
@@ -33,7 +33,7 @@ const ManageBlogsPage = () => {
 	return (
 		<Flex align="stretch" direction="column" gap={24}>
 			<Flex align="center" gap={8} justify="space-between">
-				<PageTitle title="Manage blogs" />
+				<PageTitle title="Manage Blogs" />
 				<Button
 					color="primary"
 					component={Link}

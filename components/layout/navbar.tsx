@@ -1,13 +1,12 @@
 import React from 'react'
 import {
 	ActionIcon,
-	Burger,
 	Flex,
 	Navbar as MantineNavbar,
 	rem,
 	ScrollArea,
 } from '@mantine/core'
-import { SignOut } from '@phosphor-icons/react'
+import { List, SignOut } from '@phosphor-icons/react'
 import Link from 'next/link'
 
 import { AvatarGroup, Logo, MainMenu } from '@/components'
@@ -22,6 +21,7 @@ interface NavbarProps {
 const Navbar = ({ opened, toggle }: NavbarProps) => {
 	return (
 		<MantineNavbar
+			bg="transparent"
 			hidden={!opened}
 			hiddenBreakpoint="sm"
 			p="md"
@@ -37,12 +37,9 @@ const Navbar = ({ opened, toggle }: NavbarProps) => {
 					paddingRight: rem(8),
 				}}
 			>
-				<Burger
-					opened={false}
-					size={20}
-					sx={{ flexShrink: 0 }}
-					onClick={toggle}
-				/>
+				<ActionIcon onClick={toggle}>
+					<List size={24} />
+				</ActionIcon>
 				{opened && (
 					<Link href={ROUTES.HOME}>
 						<Logo />

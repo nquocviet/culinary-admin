@@ -5,11 +5,11 @@ import { ActionIcon, Button, Flex, Text } from '@mantine/core'
 import { DotsSixVertical, MinusCircle, Plus } from '@phosphor-icons/react'
 
 import { PageTitle, TextInput } from '@/components'
-import { INGREDIENT_TYPES } from '@/constants/recipe'
+import { IngredientType } from '@/constants/recipe'
 import { uuid } from '@/utils'
 
 const createNewIngredient = (
-	type: keyof typeof INGREDIENT_TYPES = INGREDIENT_TYPES.HEADER
+	type: keyof typeof IngredientType = IngredientType.HEADER
 ) => {
 	const ingredient = {
 		id: uuid(),
@@ -88,15 +88,14 @@ const IngredientSection = () => {
 													control={control}
 													name={`ingredients[${index}].title`}
 													placeholder={
-														ingredient.type === INGREDIENT_TYPES.HEADER
+														ingredient.type === IngredientType.HEADER
 															? 'Add header, e.g. Sauce'
 															: 'Add ingredient, e.g.  0.5 lb. shrimp'
 													}
 													size="md"
 													styles={() => ({
 														input: {
-															...(ingredient.type ===
-																INGREDIENT_TYPES.HEADER && {
+															...(ingredient.type === IngredientType.HEADER && {
 																'&::placeholder': {
 																	fontWeight: 'var(--fw-semibold)' as 'bold',
 																},
@@ -126,7 +125,7 @@ const IngredientSection = () => {
 					leftIcon={<Plus size={20} />}
 					size="md"
 					variant="outline"
-					onClick={() => append(createNewIngredient(INGREDIENT_TYPES.HEADER))}
+					onClick={() => append(createNewIngredient(IngredientType.HEADER))}
 				>
 					Add new header
 				</Button>
@@ -135,7 +134,7 @@ const IngredientSection = () => {
 					leftIcon={<Plus size={20} />}
 					size="md"
 					variant="outline"
-					onClick={() => append(createNewIngredient(INGREDIENT_TYPES.ITEM))}
+					onClick={() => append(createNewIngredient(IngredientType.ITEM))}
 				>
 					Add new ingredients
 				</Button>

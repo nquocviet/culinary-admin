@@ -1,4 +1,4 @@
-export const QUOTE_STATUS = {
-	DRAFT: 'DRAFT',
-	PUBLISHED: 'PUBLISHED',
-} as const
+export enum QuoteStatus {
+	DRAFT = 'DRAFT',
+	PUBLISHED = 'PUBLISHED',
+}

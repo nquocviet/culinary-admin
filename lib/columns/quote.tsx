@@ -4,7 +4,7 @@ import { PencilSimple, Trash } from '@phosphor-icons/react'
 
 import { ModalAddEditQuote } from '@/app/(routes)/quotes/components'
 import { ModalConfirm } from '@/components'
-import { QUOTE_STATUS } from '@/constants/quote'
+import { QuoteStatus } from '@/constants/quote'
 import { MantineDataTableColumn } from '@/types'
 import { formatDate } from '@/utils'
 
@@ -63,9 +63,9 @@ export const QUOTE_COLUMNS: MantineDataTableColumn<any> = [
 		accessor: 'status',
 		render: ({ status }) => {
 			switch (status) {
-				case QUOTE_STATUS.DRAFT:
+				case QuoteStatus.DRAFT:
 					return <Badge color="gray">Draft</Badge>
-				case QUOTE_STATUS.PUBLISHED:
+				case QuoteStatus.PUBLISHED:
 					return <Badge color="green">Published</Badge>
 				default:
 					return '-'

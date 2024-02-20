@@ -185,3 +185,21 @@ input[type='number'] {
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 2;
 }
+
+#nprogress .bar {
+	height: 3px !important;
+	background: var(--primary-600) !important;
+}
+
+#nprogress .peg {
+	display: none !important;
+}
+
+#nprogress .spinner-icon {
+	border-top-color: var(--primary-600);
+	border-left-color: var(--primary-600);
+}
+
+#nprogress .spinner {
+	display: none !important;
+}

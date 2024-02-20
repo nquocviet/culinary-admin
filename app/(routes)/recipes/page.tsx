@@ -8,7 +8,7 @@ import Link from 'next/link'
 import { PageTitle, Table } from '@/components'
 import { ROUTES } from '@/config/routes'
 import { PAGE_SIZE } from '@/constants/common'
-import { RECIPE_STATUS } from '@/constants/recipe'
+import { RecipeStatus } from '@/constants/recipe'
 import { RECIPE_COLUMNS } from '@/lib/columns/recipe'
 
 import { AnalysisCharts, FormFilter } from './components'
@@ -21,7 +21,7 @@ const data = [...Array(10)].map((_, id) => ({
 	cuisine: 'Central Asia',
 	dishes: [...Array(4)].map(() => 'Breakfast'),
 	id,
-	status: RECIPE_STATUS.PUBLISHED,
+	status: RecipeStatus.PUBLISHED,
 	title: 'Egg salad sandwich with avocado and tomato',
 	updatedAt: new Date(),
 }))
@@ -34,7 +34,7 @@ const ManageRecipesPage = () => {
 	return (
 		<Flex align="stretch" direction="column" gap={24}>
 			<Flex align="center" gap={8} justify="space-between">
-				<PageTitle title="Manage recipes" />
+				<PageTitle title="Manage Recipes" />
 				<Button
 					color="primary"
 					component={Link}

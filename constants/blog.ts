@@ -1,4 +1,4 @@
-export const BLOG_STATUS = {
-	DRAFT: 'DRAFT',
-	PUBLISHED: 'PUBLISHED',
-} as const
+export enum BlogStatus {
+	DRAFT = 'DRAFT',
+	PUBLISHED = 'PUBLISHED',
+}
