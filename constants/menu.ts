@@ -113,7 +113,7 @@ export const MENU_LIST: MenuListType = [
 	],
 	[
 		{
-			href: ROUTES.HELP_CENTER,
+			href: ROUTES.GUIDELINE,
 			icon: Notebook,
 			label: 'Guideline',
 		},

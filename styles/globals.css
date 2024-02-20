@@ -131,7 +131,7 @@
 
 body {
 	color: rgb(var(--black));
-	font-family: var(--ff-inter) !important;
+	font-family: var(--ff-open-sans) !important;
 	font-weight: var(--fw-regular);
 	font-size: var(--fs-text-md);
 	line-height: var(--lh-text-md);

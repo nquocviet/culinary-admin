@@ -1,6 +1,6 @@
 import {
-	Inter as FontInter,
 	Merriweather as FontMerriweather,
+	Open_Sans as OpenSans,
 } from 'next/font/google'
 
 import { siteConfig } from '@/config/site'
@@ -14,9 +14,10 @@ const fontMerriweather = FontMerriweather({
 	weight: ['300', '400', '700', '900'],
 })
 
-const fontInter = FontInter({
+const openSans = OpenSans({
+	preload: true,
 	subsets: ['latin'],
-	variable: '--ff-inter',
+	variable: '--ff-open-sans',
 })
 
 interface RootLayoutProps {
@@ -68,7 +69,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<head />
-			<body className={`${fontMerriweather.variable} ${fontInter.variable}`}>
+			<body className={`${fontMerriweather.variable} ${openSans.variable}`}>
 				<AppProvider>{children}</AppProvider>
 			</body>
 		</html>
