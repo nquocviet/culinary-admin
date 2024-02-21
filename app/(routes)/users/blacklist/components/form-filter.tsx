@@ -1,12 +1,14 @@
 import React, { Dispatch, SetStateAction } from 'react'
 import { useForm } from 'react-hook-form'
-import { Button, Collapse, Flex, Grid, rem } from '@mantine/core'
+import { Button, Collapse, Flex, Grid, Menu, rem } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import {
 	Check,
+	CirclesThreePlus,
 	Eraser,
 	FunnelSimple,
 	MagnifyingGlass,
+	Prohibit,
 	Trash,
 	X,
 } from '@phosphor-icons/react'
@@ -25,8 +27,14 @@ const FormFilter = ({
 	setSelectedRecords,
 }: FormFilterProps) => {
 	const [opened, { toggle }] = useDisclosure(false)
-	const [modalOpened, { close: closeModal, open: openModal }] =
-		useDisclosure(false)
+	const [
+		modalUnblockOpened,
+		{ close: closeUnblockModal, open: openUnblockModal },
+	] = useDisclosure(false)
+	const [
+		modalDeleteOpened,
+		{ close: closeDeleteModal, open: openDeleteModal },
+	] = useDisclosure(false)
 	const { control, handleSubmit } = useForm()
 
 	return (
@@ -52,14 +60,31 @@ const FormFilter = ({
 								>
 									Cancel
 								</Button>
-								<Button
-									color="gray"
-									leftIcon={<Trash size={20} />}
-									variant="filled"
-									onClick={openModal}
-								>
-									Delete selected
-								</Button>
+								<Menu shadow="md" width={240}>
+									<Menu.Target>
+										<Button
+											color="gray"
+											leftIcon={<CirclesThreePlus size={20} />}
+											variant="filled"
+										>
+											Select action
+										</Button>
+									</Menu.Target>
+									<Menu.Dropdown>
+										<Menu.Item
+											icon={<Prohibit size={20} />}
+											onClick={openUnblockModal}
+										>
+											Unblock selected
+										</Menu.Item>
+										<Menu.Item
+											icon={<Trash size={20} />}
+											onClick={openDeleteModal}
+										>
+											Delete selected
+										</Menu.Item>
+									</Menu.Dropdown>
+								</Menu>
 							</>
 						)}
 						<TextInput
@@ -119,11 +144,19 @@ const FormFilter = ({
 				</Collapse>
 			</form>
 			<ModalConfirm
+				confirmText="Confirm"
+				message="Are you sure you want to unblock those users? Those users will be able to log back in and use Culinary normally."
+				opened={modalUnblockOpened}
+				title="Unblock all users selected"
+				type="warning"
+				onClose={closeUnblockModal}
+			/>
+			<ModalConfirm
 				confirmText="Delete"
 				message="Are you sure you want to delete those users? This action cannot be undone."
-				opened={modalOpened}
+				opened={modalDeleteOpened}
 				title="Delete all users selected"
-				onClose={closeModal}
+				onClose={closeDeleteModal}
 			/>
 		</>
 	)

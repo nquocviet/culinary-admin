@@ -40,7 +40,6 @@ const ManageRecipesPage = () => {
 					component={Link}
 					href={ROUTES.RECIPES.NEW}
 					leftIcon={<Plus size={20} weight="bold" />}
-					size="md"
 				>
 					Add new recipe
 				</Button>

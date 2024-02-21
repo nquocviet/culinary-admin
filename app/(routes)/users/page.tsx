@@ -37,7 +37,6 @@ const ManageUsersPage = () => {
 					component={Link}
 					href={ROUTES.USERS.NEW}
 					leftIcon={<Plus size={20} weight="bold" />}
-					size="md"
 				>
 					Add new user
 				</Button>

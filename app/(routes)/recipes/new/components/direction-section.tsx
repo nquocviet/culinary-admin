@@ -66,7 +66,6 @@ const DirectionSection = () => {
 						label="Title"
 						name={`directions[${index}].title`}
 						placeholder="e.g. Make the barbecue sauce"
-						size="md"
 					/>
 					<RichTextEditor
 						content=""
@@ -81,7 +80,6 @@ const DirectionSection = () => {
 				<Button
 					color="gray"
 					leftIcon={<Plus size={20} />}
-					size="md"
 					variant="outline"
 					onClick={() => append(createNewDirection())}
 				>

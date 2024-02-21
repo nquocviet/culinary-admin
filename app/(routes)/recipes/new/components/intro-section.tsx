@@ -22,7 +22,6 @@ const IntroSection = () => {
 				label="Title"
 				name="title"
 				placeholder="New recipe title here"
-				size="md"
 				required
 			/>
 			<Textarea
@@ -31,14 +30,12 @@ const IntroSection = () => {
 				minRows={5}
 				name="description"
 				placeholder="Enter a description"
-				size="md"
 			/>
 			<div>
 				<Button
 					color="gray"
 					component="label"
 					leftIcon={<ImageSquare size={20} weight="fill" />}
-					size="md"
 					variant="outline"
 				>
 					Add a cover image
@@ -61,7 +58,6 @@ const IntroSection = () => {
 							min={0}
 							name="prepareHour"
 							rightText="hours"
-							size="md"
 							required
 						/>
 						<NumberInput
@@ -70,7 +66,6 @@ const IntroSection = () => {
 							min={0}
 							name="prepareMinute"
 							rightText="minutes"
-							size="md"
 						/>
 					</Flex>
 				</Grid.Col>
@@ -89,7 +84,6 @@ const IntroSection = () => {
 							min={0}
 							name="cookingHour"
 							rightText="hours"
-							size="md"
 							required
 						/>
 						<NumberInput
@@ -98,7 +92,6 @@ const IntroSection = () => {
 							min={0}
 							name="cookingMinute"
 							rightText="minutes"
-							size="md"
 						/>
 					</Flex>
 				</Grid.Col>
@@ -109,7 +102,6 @@ const IntroSection = () => {
 						label="Difficulty"
 						name="difficulty"
 						placeholder="Choose a difficulty"
-						size="md"
 						required
 					/>
 				</Grid.Col>
@@ -121,7 +113,6 @@ const IntroSection = () => {
 						min={1}
 						name="serves"
 						rightText="people"
-						size="md"
 						required
 					/>
 				</Grid.Col>
@@ -132,7 +123,6 @@ const IntroSection = () => {
 						label="Cuisine"
 						name="cuisine"
 						placeholder="Choose a cuisine"
-						size="md"
 					/>
 				</Grid.Col>
 				<Grid.Col span={6}>
@@ -142,7 +132,6 @@ const IntroSection = () => {
 						label="Categories"
 						name="dishes"
 						placeholder="Choose categories"
-						size="md"
 					/>
 				</Grid.Col>
 			</Grid>
@@ -152,7 +141,6 @@ const IntroSection = () => {
 				label="Series"
 				name="series"
 				placeholder="Add to your series"
-				size="md"
 			/>
 		</Flex>
 	)

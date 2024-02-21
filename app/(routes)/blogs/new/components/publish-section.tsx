@@ -17,13 +17,11 @@ const PublishSection = () => {
 					description="Anyone who sees my profile can see this blog."
 					label="Publish blog"
 					name="published"
-					size="md"
 				/>
 				<Flex gap={12}>
 					<Button
 						color="gray"
 						leftIcon={<Prohibit size={20} weight="bold" />}
-						size="md"
 						variant="outline"
 					>
 						Cancel
@@ -31,7 +29,6 @@ const PublishSection = () => {
 					<Button
 						color="gray"
 						leftIcon={<Eye size={20} weight="bold" />}
-						size="md"
 						variant="filled"
 					>
 						Preview
@@ -39,7 +36,6 @@ const PublishSection = () => {
 					<Button
 						color="primary"
 						leftIcon={<FloppyDisk size={20} weight="bold" />}
-						size="md"
 					>
 						Save blog
 					</Button>

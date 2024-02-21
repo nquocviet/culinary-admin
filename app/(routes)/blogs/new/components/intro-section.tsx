@@ -22,7 +22,6 @@ const IntroSection = () => {
 				label="Title"
 				name="title"
 				placeholder="New blog title here"
-				size="md"
 				required
 			/>
 			<Textarea
@@ -31,14 +30,12 @@ const IntroSection = () => {
 				minRows={5}
 				name="description"
 				placeholder="Enter a description"
-				size="md"
 			/>
 			<div>
 				<Button
 					color="gray"
 					component="label"
 					leftIcon={<ImageSquare size={20} weight="fill" />}
-					size="md"
 					variant="outline"
 				>
 					Add a cover image
@@ -51,7 +48,6 @@ const IntroSection = () => {
 				label="Topics"
 				name="topic"
 				placeholder="Choose topics"
-				size="md"
 			/>
 			<RichTextEditor
 				content=""

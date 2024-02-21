@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import { ModalBaseProps, rem, Text } from '@mantine/core'
 import { Button, Modal as MantineModal } from '@mantine/core'
-import { WarningCircle } from '@phosphor-icons/react'
+import { Info, WarningCircle } from '@phosphor-icons/react'
 
 import { HighlightIcon, ModalAction } from '@/components'
 
@@ -14,6 +14,7 @@ interface ModalConfirmProps extends Omit<ModalBaseProps, '__staticSelector'> {
 	onCancel?: () => void
 	onConfirm?: () => void
 	title: string
+	type?: 'error' | 'warning'
 }
 
 const ModalConfirm = ({
@@ -27,6 +28,7 @@ const ModalConfirm = ({
 	onConfirm,
 	opened,
 	title,
+	type = 'error',
 	...props
 }: ModalConfirmProps) => {
 	return (
@@ -50,7 +52,12 @@ const ModalConfirm = ({
 					sx={{ alignItems: 'flex-start', zIndex: 1000 }}
 				>
 					<MantineModal.Title>
-						<HighlightIcon color="red" icon={WarningCircle} size="lg" />
+						{type === 'error' && (
+							<HighlightIcon color="red" icon={WarningCircle} size="lg" />
+						)}
+						{type === 'warning' && (
+							<HighlightIcon color="yellow" icon={Info} size="lg" />
+						)}
 					</MantineModal.Title>
 					<MantineModal.CloseButton iconSize={24} size="lg" />
 				</MantineModal.Header>
@@ -87,7 +94,6 @@ const ModalConfirm = ({
 					<ModalAction fluid>
 						<Button
 							color="gray"
-							size="md"
 							variant="outline"
 							onClick={() => {
 								if (closeOnCancel) {
@@ -99,8 +105,7 @@ const ModalConfirm = ({
 							{cancelText}
 						</Button>
 						<Button
-							color="red"
-							size="md"
+							color={type === 'error' ? 'red' : 'primary'}
 							onClick={() => {
 								if (closeOnConfirm) {
 									onClose()

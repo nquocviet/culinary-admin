@@ -30,7 +30,6 @@ const FormFilter = ({
 							<Button
 								color="gray"
 								leftIcon={<X size={20} />}
-								size="md"
 								variant="outline"
 								onClick={() => setSelectedRecords([])}
 							>
@@ -39,7 +38,6 @@ const FormFilter = ({
 							<Button
 								color="gray"
 								leftIcon={<Trash size={20} />}
-								size="md"
 								variant="filled"
 								onClick={openModal}
 							>
@@ -52,7 +50,6 @@ const FormFilter = ({
 						icon={<MagnifyingGlass size={20} />}
 						name="q"
 						placeholder="Search..."
-						size="md"
 						w={280}
 					/>
 				</Flex>

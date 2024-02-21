@@ -92,7 +92,6 @@ const IngredientSection = () => {
 															? 'Add header, e.g. Sauce'
 															: 'Add ingredient, e.g.  0.5 lb. shrimp'
 													}
-													size="md"
 													styles={() => ({
 														input: {
 															...(ingredient.type === IngredientType.HEADER && {
@@ -123,7 +122,6 @@ const IngredientSection = () => {
 				<Button
 					color="gray"
 					leftIcon={<Plus size={20} />}
-					size="md"
 					variant="outline"
 					onClick={() => append(createNewIngredient(IngredientType.HEADER))}
 				>
@@ -132,7 +130,6 @@ const IngredientSection = () => {
 				<Button
 					color="gray"
 					leftIcon={<Plus size={20} />}
-					size="md"
 					variant="outline"
 					onClick={() => append(createNewIngredient(IngredientType.ITEM))}
 				>

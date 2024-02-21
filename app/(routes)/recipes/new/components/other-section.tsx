@@ -40,7 +40,6 @@ const OtherSection = () => {
 										control={control}
 										name={`nutritionals[${index}].value`}
 										placeholder="e.g. 200g"
-										size="md"
 										styles={{
 											input: {
 												borderBottomRightRadius: 0,
@@ -57,7 +56,6 @@ const OtherSection = () => {
 										control={control}
 										name={`nutritionals[${index}].unit`}
 										placeholder="e.g. calories"
-										size="md"
 										styles={{
 											input: {
 												borderBottomLeftRadius: 0,
@@ -93,7 +91,6 @@ const OtherSection = () => {
 								<Button
 									color="gray"
 									disabled={fields.length === MAX_NUTRITIONAL_ITEMS}
-									size="md"
 									sx={{ flex: 1 }}
 									variant="outline"
 									onClick={() => {
@@ -106,7 +103,6 @@ const OtherSection = () => {
 								</Button>
 								<Button
 									color="primary"
-									size="md"
 									sx={{ flex: 1 }}
 									onClick={() => replace([])}
 								>
@@ -145,7 +141,6 @@ const OtherSection = () => {
 					<Button
 						color="gray"
 						leftIcon={<Plus size={20} />}
-						size="md"
 						variant="outline"
 						onClick={() =>
 							replace([
@@ -162,7 +157,6 @@ const OtherSection = () => {
 					<Button
 						color="gray"
 						leftIcon={<Plus size={20} />}
-						size="md"
 						variant="outline"
 						onClick={() => setShowNote(true)}
 					>

@@ -36,7 +36,6 @@ const FormFilter = ({
 					<Button
 						color="gray"
 						leftIcon={<FunnelSimple size={20} />}
-						size="md"
 						variant="outline"
 						onClick={toggle}
 					>
@@ -48,7 +47,6 @@ const FormFilter = ({
 								<Button
 									color="gray"
 									leftIcon={<X size={20} />}
-									size="md"
 									variant="outline"
 									onClick={() => setSelectedRecords([])}
 								>
@@ -57,7 +55,6 @@ const FormFilter = ({
 								<Button
 									color="gray"
 									leftIcon={<Trash size={20} />}
-									size="md"
 									variant="filled"
 									onClick={openModal}
 								>
@@ -70,7 +67,6 @@ const FormFilter = ({
 							icon={<MagnifyingGlass size={20} />}
 							name="q"
 							placeholder="Search..."
-							size="md"
 							w={280}
 						/>
 					</Flex>
@@ -84,7 +80,6 @@ const FormFilter = ({
 								label="Author"
 								name="author"
 								placeholder="Select author"
-								size="md"
 							/>
 						</Grid.Col>
 						<Grid.Col span={4}>
@@ -94,7 +89,6 @@ const FormFilter = ({
 								label="Categories"
 								name="categories"
 								placeholder="Select categories"
-								size="md"
 							/>
 						</Grid.Col>
 						<Grid.Col span={4}>
@@ -104,7 +98,6 @@ const FormFilter = ({
 								label="Reading time"
 								name="readingTime"
 								placeholder="Select reading time"
-								size="md"
 							/>
 						</Grid.Col>
 						<Grid.Col span={4}>
@@ -114,7 +107,6 @@ const FormFilter = ({
 								label="Status"
 								name="status"
 								placeholder="Select status"
-								size="md"
 							/>
 						</Grid.Col>
 						<Grid.Col span={4}>
@@ -124,7 +116,6 @@ const FormFilter = ({
 								label="Sort by"
 								name="sortOrder"
 								placeholder="Select sort by"
-								size="md"
 							/>
 						</Grid.Col>
 					</Grid>
@@ -132,7 +123,6 @@ const FormFilter = ({
 						<Button
 							color="gray"
 							leftIcon={<Eraser size={20} weight="bold" />}
-							size="md"
 							variant="outline"
 						>
 							Clear all
@@ -140,7 +130,6 @@ const FormFilter = ({
 						<Button
 							color="primary"
 							leftIcon={<Check size={20} weight="bold" />}
-							size="md"
 						>
 							Apply
 						</Button>

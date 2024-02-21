@@ -32,7 +32,6 @@ const NewRecipePage = () => {
 						<Button
 							color="gray"
 							leftIcon={<DownloadSimple size={20} weight="bold" />}
-							size="md"
 							variant="outline"
 						>
 							Download sample
@@ -40,7 +39,6 @@ const NewRecipePage = () => {
 						<Button
 							color="primary"
 							leftIcon={<UploadSimple size={20} weight="bold" />}
-							size="md"
 						>
 							Import recipe
 						</Button>

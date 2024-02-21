@@ -35,7 +35,6 @@ const ManageQuotesPage = () => {
 				<Button
 					color="primary"
 					leftIcon={<Plus size={20} weight="bold" />}
-					size="md"
 					onClick={open}
 				>
 					Add new quote

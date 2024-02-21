@@ -39,7 +39,6 @@ const ManageBlogsPage = () => {
 					component={Link}
 					href={ROUTES.BLOGS.NEW}
 					leftIcon={<Plus size={20} weight="bold" />}
-					size="md"
 				>
 					Add new blog
 				</Button>
